@@ -4,516 +4,495 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🏆 Figurinhas Copa 2026</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-/* ── RESET & BASE ── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
-:root {
-  --verde:   #00c853;
-  --verde2:  #00e676;
-  --ouro:    #ffd600;
-  --ouro2:   #ffab00;
-  --azul:    #0d1b2a;
-  --azul2:   #162536;
-  --azul3:   #1e3a5f;
-  --azul4:   #2451a0;
-  --branco:  #f5f7fa;
-  --cinza:   #8fa3b8;
-  --cinza2:  #c8d8e8;
-  --falta-bg:    #1a0a0a;
-  --falta-cor:   #ff6b6b;
-  --falta-borda: #7a1f1f;
-  --tenho-bg:    #071a12;
-  --tenho-cor:   #00e676;
-  --tenho-borda: #0a5c2e;
-  --radius: 14px;
-  --shadow: 0 4px 24px rgba(0,0,0,0.5);
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-cond:    'Barlow Condensed', sans-serif;
-  --font-body:    'Barlow', sans-serif;
+:root{
+  --bg:#0e0a1a;
+  --bg2:#160e2a;
+  --card-radius:22px;
+  --font-title:'Fredoka One',cursive;
+  --font-body:'Nunito',sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html{scroll-behavior:smooth}
 
-body {
-  font-family: var(--font-body);
-  background: var(--azul);
-  color: var(--branco);
-  min-height: 100vh;
-  overflow-x: hidden;
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  min-height:100vh;
+  overflow-x:hidden;
+  color:#fff;
 }
 
-/* Grain texture overlay */
-body::before {
-  content: '';
-  position: fixed; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none; z-index: 0; opacity: 0.4;
+/* ── FUNDO ANIMADO ── */
+.bg-orbs{
+  position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+}
+.orb{
+  position:absolute;border-radius:50%;filter:blur(80px);opacity:0.18;
+  animation:orbFloat 12s ease-in-out infinite;
+}
+.orb1{width:500px;height:500px;background:#ff6b35;top:-100px;left:-100px;animation-delay:0s}
+.orb2{width:400px;height:400px;background:#00d4ff;top:20%;right:-80px;animation-delay:-4s}
+.orb3{width:350px;height:350px;background:#ffdd00;bottom:10%;left:20%;animation-delay:-8s}
+.orb4{width:300px;height:300px;background:#ff3cac;bottom:-80px;right:10%;animation-delay:-2s}
+@keyframes orbFloat{
+  0%,100%{transform:translate(0,0) scale(1)}
+  33%{transform:translate(30px,-40px) scale(1.1)}
+  66%{transform:translate(-20px,20px) scale(0.95)}
 }
 
 /* ── HEADER ── */
-header {
-  position: sticky; top: 0; z-index: 100;
-  background: linear-gradient(135deg, #0b2447 0%, #0d1b2a 60%, #162536 100%);
-  border-bottom: 3px solid var(--ouro);
-  box-shadow: 0 4px 30px rgba(0,0,0,0.7);
-  padding: 14px 18px 12px;
+header{
+  position:sticky;top:0;z-index:200;
+  background:rgba(14,10,26,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:2px solid rgba(255,255,255,0.08);
+  padding:12px 20px;
 }
 
-.header-top {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  flex-wrap: wrap;
+.hdr-inner{
+  max-width:1200px;margin:auto;
+  display:flex;flex-direction:column;gap:12px;
 }
 
-.logo-area {
-  display: flex; align-items: center; gap: 12px;
+.hdr-top{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
 }
 
-.trophy {
-  font-size: 42px; line-height: 1;
-  filter: drop-shadow(0 0 12px rgba(255,214,0,0.6));
-  animation: pulse-glow 3s ease-in-out infinite;
+.logo{
+  display:flex;align-items:center;gap:14px;
+}
+.logo-icon{
+  font-size:48px;
+  animation:spin 6s linear infinite;
+  filter:drop-shadow(0 0 16px rgba(255,221,0,0.7));
+}
+@keyframes spin{
+  0%,90%{transform:rotate(0deg)}
+  95%{transform:rotate(20deg)}
+  100%{transform:rotate(0deg)}
+}
+.logo-text h1{
+  font-family:var(--font-title);
+  font-size:26px;letter-spacing:1px;line-height:1;
+  background:linear-gradient(90deg,#ffdd00,#ff6b35,#ff3cac,#00d4ff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-size:300%;
+  animation:gradShift 4s linear infinite;
+}
+@keyframes gradShift{0%{background-position:0%}100%{background-position:300%}}
+.logo-text p{
+  font-size:11px;color:rgba(255,255,255,0.45);font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-top:2px;
 }
 
-@keyframes pulse-glow {
-  0%, 100% { filter: drop-shadow(0 0 8px rgba(255,214,0,0.4)); }
-  50%       { filter: drop-shadow(0 0 20px rgba(255,214,0,0.9)); }
+/* Stats topo */
+.hdr-stats{
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+}
+.hstat{
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(255,255,255,0.12);
+  border-radius:14px;padding:6px 14px;
+  display:flex;flex-direction:column;align-items:center;
+  min-width:72px;
+}
+.hstat-val{
+  font-family:var(--font-title);font-size:22px;line-height:1;
+}
+.hstat-lbl{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-top:2px;}
+.hstat:nth-child(1) .hstat-val{color:#4eff91}
+.hstat:nth-child(2) .hstat-val{color:#ff6b6b}
+.hstat:nth-child(3) .hstat-val{color:#ffdd00}
+.hstat:nth-child(4) .hstat-val{color:#00d4ff}
+
+/* Barra de progresso global */
+.prog-global{
+  background:rgba(255,255,255,0.07);
+  border-radius:99px;height:8px;overflow:hidden;position:relative;
+}
+.prog-global-fill{
+  height:100%;border-radius:99px;
+  background:linear-gradient(90deg,#4eff91,#00d4ff,#ffdd00,#ff6b35);
+  background-size:300%;
+  animation:gradShift 3s linear infinite;
+  transition:width .6s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 0 16px rgba(78,255,145,0.5);
 }
 
-.titulo-bloco h1 {
-  font-family: var(--font-display);
-  font-size: 28px;
-  letter-spacing: 2px;
-  line-height: 1;
-  background: linear-gradient(90deg, var(--ouro), var(--verde2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* ── BARRA DE FERRAMENTAS ── */
+.toolbar{
+  max-width:1200px;margin:14px auto 0;
+  padding:0 20px;
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
 }
 
-.titulo-bloco p {
-  font-family: var(--font-cond);
-  font-size: 13px;
-  color: var(--cinza);
-  letter-spacing: 1px;
-  margin-top: 3px;
+.search-wrap{
+  position:relative;flex:1;min-width:200px;
 }
+.search-wrap svg{
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  color:rgba(255,255,255,0.35);width:16px;height:16px;pointer-events:none;
+}
+#busca{
+  width:100%;padding:10px 14px 10px 42px;
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(255,255,255,0.12);
+  border-radius:14px;color:#fff;
+  font-family:var(--font-body);font-size:14px;font-weight:600;
+  transition:border-color .2s,box-shadow .2s;
+}
+#busca:focus{outline:none;border-color:#ffdd00;box-shadow:0 0 0 3px rgba(255,221,0,.15)}
+#busca::placeholder{color:rgba(255,255,255,.3)}
 
-/* ── BARRA DE AÇÕES ── */
-.topbar {
-  display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; align-items: center;
+#filtro{
+  padding:10px 14px;
+  background:rgba(255,255,255,0.07);
+  border:1.5px solid rgba(255,255,255,0.12);
+  border-radius:14px;color:#fff;
+  font-family:var(--font-body);font-size:14px;font-weight:600;cursor:pointer;
 }
+#filtro:focus{outline:none;border-color:#ffdd00}
+#filtro option{background:#160e2a}
 
-.search-wrap {
-  position: relative; flex: 1; min-width: 200px;
+.btn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:9px 16px;border-radius:14px;border:none;
+  font-family:var(--font-body);font-size:13px;font-weight:800;
+  cursor:pointer;white-space:nowrap;
+  transition:transform .15s,filter .15s,box-shadow .15s;
 }
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn:active{transform:scale(.97)}
 
-.search-wrap svg {
-  position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
-  color: var(--cinza); width: 16px; height: 16px;
-}
+.btn-festa{background:linear-gradient(135deg,#ff6b35,#ff3cac);color:#fff;box-shadow:0 4px 20px rgba(255,107,53,.35)}
+.btn-azul{background:linear-gradient(135deg,#0070f3,#00d4ff);color:#fff;box-shadow:0 4px 20px rgba(0,212,255,.25)}
+.btn-ghost{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.14);color:rgba(255,255,255,.8)}
+.btn-perigo{background:rgba(255,60,60,0.15);border:1.5px solid rgba(255,60,60,.3);color:#ff9999}
 
-#busca {
-  width: 100%; padding: 10px 14px 10px 40px;
-  background: var(--azul2); border: 1.5px solid var(--azul3);
-  border-radius: 10px; color: var(--branco);
-  font-family: var(--font-body); font-size: 14px;
-  transition: border-color .2s, box-shadow .2s;
-}
-#busca:focus { outline: none; border-color: var(--ouro); box-shadow: 0 0 0 3px rgba(255,214,0,.15); }
-#busca::placeholder { color: var(--cinza); }
-
-#filtro {
-  padding: 10px 14px;
-  background: var(--azul2); border: 1.5px solid var(--azul3);
-  border-radius: 10px; color: var(--branco);
-  font-family: var(--font-body); font-size: 14px;
-  cursor: pointer;
-}
-#filtro:focus { outline: none; border-color: var(--ouro); }
-#filtro option { background: var(--azul2); }
-
-/* Botões do header */
-.btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 9px 15px; border-radius: 10px; border: none;
-  font-family: var(--font-cond); font-size: 14px; font-weight: 600;
-  letter-spacing: .5px; cursor: pointer;
-  transition: transform .15s, box-shadow .15s, filter .15s;
-  white-space: nowrap;
-}
-.btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
-.btn:active { transform: translateY(0); }
-
-.btn-ouro  { background: linear-gradient(135deg, var(--ouro2), var(--ouro)); color: #1a1000; }
-.btn-verde { background: linear-gradient(135deg, #009e42, var(--verde)); color: #001a0a; }
-.btn-ghost { background: var(--azul2); border: 1.5px solid var(--azul3); color: var(--cinza2); }
-.btn-ghost:hover { border-color: var(--cinza); }
-.btn-perigo { background: #3b0f0f; border: 1.5px solid #7a1f1f; color: #ff9999; }
-
-/* ── STATS ── */
-main { max-width: 1060px; margin: auto; padding: 18px 14px 100px; position: relative; z-index: 1; }
-
-.stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px;
-}
-
-.stat {
-  background: linear-gradient(135deg, var(--azul2) 0%, var(--azul3) 100%);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: var(--radius);
-  padding: 16px 12px;
-  text-align: center;
-  box-shadow: var(--shadow);
-  position: relative; overflow: hidden;
-  transition: transform .2s;
-}
-.stat:hover { transform: translateY(-3px); }
-.stat::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
-}
-.stat:nth-child(1)::after { background: var(--verde); }
-.stat:nth-child(2)::after { background: var(--falta-cor); }
-.stat:nth-child(3)::after { background: var(--ouro); }
-.stat:nth-child(4)::after { background: linear-gradient(90deg, var(--verde), var(--ouro)); }
-
-.stat-label {
-  font-family: var(--font-cond);
-  font-size: 11px; font-weight: 600;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--cinza); margin-bottom: 6px;
-}
-.stat-valor {
-  font-family: var(--font-display);
-  font-size: 40px; line-height: 1;
-}
-.stat:nth-child(1) .stat-valor { color: var(--verde2); }
-.stat:nth-child(2) .stat-valor { color: var(--falta-cor); }
-.stat:nth-child(3) .stat-valor { color: var(--ouro); }
-.stat:nth-child(4) .stat-valor { color: var(--branco); font-size: 32px; }
-
-/* Progress bar */
-.progresso-wrap {
-  background: var(--azul2); border-radius: var(--radius);
-  padding: 14px 18px; margin-bottom: 18px;
-  border: 1px solid rgba(255,255,255,0.07);
-  box-shadow: var(--shadow);
-}
-.prog-labels {
-  display: flex; justify-content: space-between;
-  font-family: var(--font-cond); font-size: 12px;
-  color: var(--cinza); letter-spacing: 1px; margin-bottom: 8px;
-}
-.prog-bar-outer {
-  background: var(--azul); border-radius: 99px;
-  height: 10px; overflow: hidden;
-}
-.prog-bar-inner {
-  height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg, #009e42, var(--verde2), var(--ouro));
-  transition: width .5s cubic-bezier(.4,0,.2,1);
-  box-shadow: 0 0 12px rgba(0,200,83,.4);
+/* ── MAIN ── */
+main{
+  max-width:1200px;margin:auto;
+  padding:20px 20px 100px;
+  position:relative;z-index:1;
 }
 
 /* ── PAINEL LISTA ── */
-.painel-lista {
-  background: var(--azul2);
-  border: 1.5px solid var(--azul3);
-  border-radius: var(--radius);
-  padding: 18px; margin-bottom: 18px;
-  box-shadow: var(--shadow);
-  animation: slideDown .2s ease;
+.painel-lista{
+  background:rgba(255,255,255,0.05);
+  border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:var(--card-radius);
+  padding:20px;margin-bottom:24px;
+  animation:popIn .25s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+
+.painel-lista h3{
+  font-family:var(--font-title);font-size:18px;
+  color:#ffdd00;margin-bottom:14px;letter-spacing:.5px;
+}
+.acoes-painel{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+
+.checkgrid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  gap:6px;max-height:260px;overflow-y:auto;padding:4px;
+}
+.checkgrid::-webkit-scrollbar{width:5px}
+.checkgrid::-webkit-scrollbar-track{background:transparent}
+.checkgrid::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:99px}
+
+.checkitem{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:8px 10px;font-size:13px;font-weight:700;cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+.checkitem:hover{background:rgba(255,221,0,.08);border-color:rgba(255,221,0,.3)}
+.checkitem input[type="checkbox"]{width:15px;height:15px;accent-color:#ffdd00;flex-shrink:0;cursor:pointer}
+.checkitem .ci-flag{font-size:18px;flex-shrink:0}
+.checkitem .ci-nome{flex:1;color:rgba(255,255,255,.85)}
+.checkitem .ci-badge{
+  font-size:10px;font-weight:800;padding:2px 7px;border-radius:99px;
+  background:rgba(255,80,80,.15);color:#ff8888;border:1px solid rgba(255,80,80,.25);
+}
+.checkitem .ci-badge.ok{background:rgba(78,255,145,.1);color:#4eff91;border-color:rgba(78,255,145,.2)}
+
+.box-lista{
+  background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;padding:16px;margin-top:14px;
+}
+.box-lista h4{font-family:var(--font-title);font-size:15px;color:#ffdd00;margin-bottom:10px}
+.box-lista textarea{
+  width:100%;min-height:180px;
+  background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.08);
+  border-radius:10px;padding:12px;
+  color:#4eff91;font-family:monospace;font-size:12px;resize:vertical;
 }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ── SEÇÃO HEADING ── */
+.secao-heading{
+  display:flex;align-items:center;gap:14px;
+  margin:32px 0 16px;
+}
+.secao-heading-text{
+  font-family:var(--font-title);
+  font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  color:rgba(255,255,255,.4);white-space:nowrap;
+}
+.secao-linha{flex:1;height:1px;background:rgba(255,255,255,.08)}
+
+/* ── GRADE DE PAÍSES ── */
+.paises-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  gap:16px;
 }
 
-.painel-lista h3 {
-  font-family: var(--font-cond);
-  font-size: 16px; font-weight: 700;
-  letter-spacing: 1px; color: var(--ouro);
-  margin-bottom: 12px;
+/* ── CARD DE PAÍS ── */
+.pais-card{
+  border-radius:var(--card-radius);
+  overflow:hidden;
+  position:relative;
+  border:2px solid transparent;
+  background:linear-gradient(var(--bg2),var(--bg2)) padding-box,
+             var(--grad) border-box;
+  transition:transform .2s,box-shadow .2s;
+  animation:popIn .3s cubic-bezier(.34,1.56,.64,1) both;
+}
+.pais-card:hover{
+  transform:translateY(-4px) scale(1.01);
+  box-shadow:0 16px 48px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.05);
 }
 
-.acoes-painel { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+/* header do card */
+.pais-header{
+  padding:16px 18px 14px;
+  display:flex;align-items:center;gap:14px;
+  position:relative;
+  background:var(--grad-header);
+}
+.pais-flag{
+  font-size:44px;line-height:1;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));
+  flex-shrink:0;
+}
+.pais-info{flex:1;min-width:0}
+.pais-nome{
+  font-family:var(--font-title);font-size:19px;letter-spacing:.3px;
+  color:#fff;line-height:1.1;
+  text-shadow:0 2px 8px rgba(0,0,0,.4);
+}
+.pais-codigo{
+  display:inline-block;
+  font-size:11px;font-weight:800;letter-spacing:2px;
+  color:rgba(255,255,255,.6);
+  background:rgba(0,0,0,.25);
+  padding:2px 8px;border-radius:99px;margin-top:4px;
+}
+.pais-contagem{
+  font-family:var(--font-title);
+  font-size:13px;
+  text-align:right;
+  line-height:1.3;
+  flex-shrink:0;
+}
+.pais-contagem .ct-tenho{color:#4eff91}
+.pais-contagem .ct-falta{color:#ff8888}
+.pais-contagem .ct-completo{color:#ffdd00;font-size:14px}
 
-.checkgrid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 6px; max-height: 280px; overflow-y: auto; padding: 4px;
+/* barra de progresso do card */
+.pais-progbar{
+  height:5px;
+  background:rgba(0,0,0,.3);
 }
-.checkgrid::-webkit-scrollbar { width: 6px; }
-.checkgrid::-webkit-scrollbar-track { background: var(--azul); border-radius: 3px; }
-.checkgrid::-webkit-scrollbar-thumb { background: var(--azul3); border-radius: 3px; }
-
-.checkitem {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--azul); border: 1px solid var(--azul3);
-  border-radius: 8px; padding: 8px 10px;
-  font-size: 13px; cursor: pointer;
-  transition: background .15s, border-color .15s;
-}
-.checkitem:hover { background: var(--azul3); border-color: var(--ouro); }
-.checkitem input[type="checkbox"] {
-  width: 16px; height: 16px; accent-color: var(--ouro);
-  flex-shrink: 0; cursor: pointer;
-}
-.checkitem .ci-nome { flex: 1; color: var(--branco); }
-.checkitem .ci-badge {
-  font-family: var(--font-cond);
-  font-size: 11px; font-weight: 700;
-  padding: 2px 7px; border-radius: 99px;
-  background: var(--falta-bg); color: var(--falta-cor);
-  border: 1px solid var(--falta-borda);
-}
-.checkitem .ci-badge.ok { background: var(--tenho-bg); color: var(--tenho-cor); border-color: var(--tenho-borda); }
-
-.box-lista {
-  background: var(--azul); border: 1px solid var(--azul3);
-  border-radius: var(--radius); padding: 16px; margin-top: 14px;
-  animation: slideDown .2s ease;
-}
-.box-lista h4 {
-  font-family: var(--font-cond); font-size: 15px;
-  font-weight: 700; color: var(--ouro); margin-bottom: 10px;
-}
-.box-lista textarea {
-  width: 100%; min-height: 200px;
-  background: #060d14; border: 1px solid var(--azul3);
-  border-radius: 8px; padding: 12px;
-  color: var(--verde2); font-family: monospace; font-size: 12.5px;
-  resize: vertical;
+.pais-progbar-fill{
+  height:100%;
+  transition:width .5s cubic-bezier(.4,0,.2,1);
 }
 
-/* ── SECAO HEADING ── */
-.secao-heading {
-  display: flex; align-items: center; gap: 12px;
-  margin: 28px 0 12px;
-}
-.secao-heading span {
-  font-family: var(--font-display);
-  font-size: 22px; letter-spacing: 2px;
-  color: var(--ouro);
-}
-.secao-linha {
-  flex: 1; height: 1px;
-  background: linear-gradient(90deg, var(--ouro2), transparent);
+/* body do card — figurinhas */
+.pais-body{
+  padding:14px 16px 16px;
 }
 
-/* ── CARD SELEÇÃO ── */
-.card {
-  background: linear-gradient(135deg, var(--azul2) 0%, #132035 100%);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: var(--radius); margin-bottom: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
-  overflow: hidden;
-  transition: box-shadow .2s, border-color .2s;
-}
-.card:hover { border-color: rgba(255,214,0,0.2); box-shadow: 0 4px 24px rgba(0,0,0,0.6); }
-
-.card-summary {
-  list-style: none; display: flex;
-  align-items: center; justify-content: space-between;
-  padding: 14px 18px; cursor: pointer; gap: 10px;
-  transition: background .15s;
-}
-.card-summary::-webkit-details-marker { display: none; }
-.card-summary:hover { background: rgba(255,255,255,0.03); }
-
-details[open] .card-summary {
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-details[open] .card-summary .chevron { transform: rotate(180deg); }
-.chevron {
-  width: 18px; height: 18px; color: var(--cinza);
-  transition: transform .25s; flex-shrink: 0;
+/* grid de figurinhas */
+.figs-wrap{
+  display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;
 }
 
-.card-nome {
-  font-family: var(--font-cond);
-  font-size: 18px; font-weight: 700;
-  letter-spacing: .5px; flex: 1;
+.fig{
+  padding:6px 5px;min-width:46px;
+  border-radius:10px;border:2px solid;
+  font-family:var(--font-title);font-size:12px;
+  cursor:pointer;text-align:center;line-height:1;
+  transition:transform .12s,box-shadow .12s,filter .12s;
+  position:relative;
 }
-.card-codigo {
-  font-family: var(--font-cond);
-  font-size: 12px; font-weight: 600;
-  padding: 3px 10px; border-radius: 99px;
-  background: rgba(36,81,160,0.4);
-  border: 1px solid var(--azul4);
-  color: #7eb3ff; letter-spacing: 1px;
-  margin-left: 8px;
+.fig:hover{transform:scale(1.15) rotate(-2deg);z-index:5;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+.fig:active{transform:scale(.95)}
+
+.fig.tenho{
+  background:rgba(78,255,145,.12);
+  color:#4eff91;
+  border-color:rgba(78,255,145,.35);
+}
+.fig.tenho:hover{background:rgba(78,255,145,.22);border-color:#4eff91}
+
+.fig.falta{
+  background:rgba(255,107,107,.1);
+  color:#ff8888;
+  border-color:rgba(255,107,107,.25);
+}
+.fig.falta:hover{background:rgba(255,107,107,.22);border-color:#ff8888}
+
+/* badge "completo" sobre o card */
+.badge-completo{
+  position:absolute;top:14px;right:14px;
+  background:linear-gradient(135deg,#ffdd00,#ff6b35);
+  color:#1a0a00;font-family:var(--font-title);font-size:12px;
+  padding:4px 10px;border-radius:99px;
+  box-shadow:0 4px 12px rgba(255,221,0,.4);
+  animation:popIn .3s cubic-bezier(.34,1.56,.64,1);
+  z-index:10;
 }
 
-.card-stats { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.pill {
-  font-family: var(--font-cond); font-size: 13px; font-weight: 700;
-  padding: 4px 12px; border-radius: 99px;
+/* botões de ação do card */
+.pais-acoes{
+  display:flex;gap:6px;
 }
-.pill-tenho { background: var(--tenho-bg); color: var(--tenho-cor); border: 1px solid var(--tenho-borda); }
-.pill-falta { background: var(--falta-bg); color: var(--falta-cor); border: 1px solid var(--falta-borda); }
-.pill-completo { background: linear-gradient(90deg, #071a12, #0b3020); color: var(--verde2); border: 1px solid #0a5c2e; }
-
-/* Mini progress dentro do card */
-.mini-prog {
-  width: 80px; height: 5px; background: var(--azul); border-radius: 99px; overflow: hidden;
+.btn-card{
+  flex:1;padding:7px 10px;border-radius:10px;border:none;
+  font-family:var(--font-body);font-size:12px;font-weight:800;
+  cursor:pointer;
+  transition:transform .12s,filter .12s;
 }
-.mini-prog-fill {
-  height: 100%; border-radius: 99px;
-  background: linear-gradient(90deg, var(--verde), var(--ouro));
-}
-
-/* ── CONTEÚDO CARD ── */
-.card-body { padding: 16px 18px; }
-
-.faltantes-linha {
-  font-size: 13px; color: var(--cinza); margin-bottom: 14px; line-height: 1.6;
-}
-.faltantes-linha strong { color: var(--falta-cor); font-family: var(--font-cond); font-size: 14px; }
-.faltantes-codigos { color: #ffb3b3; font-weight: 600; }
-
-/* Grid de figurinhas */
-.figs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 14px; }
-
-.fig {
-  min-width: 54px; padding: 8px 6px;
-  border-radius: 9px; border: 1.5px solid;
-  font-family: var(--font-cond); font-size: 13px; font-weight: 700;
-  cursor: pointer; text-align: center;
-  transition: transform .12s, box-shadow .12s, filter .12s;
-  letter-spacing: .3px;
-}
-.fig:hover { transform: scale(1.1); z-index: 2; box-shadow: 0 4px 16px rgba(0,0,0,0.5); }
-.fig:active { transform: scale(0.97); }
-
-.fig.falta {
-  background: var(--falta-bg);
-  color: var(--falta-cor);
-  border-color: var(--falta-borda);
-}
-.fig.falta:hover { background: #2a1010; border-color: var(--falta-cor); filter: brightness(1.2); }
-
-.fig.tenho {
-  background: var(--tenho-bg);
-  color: var(--tenho-cor);
-  border-color: var(--tenho-borda);
-}
-.fig.tenho:hover { background: #0a2e1a; border-color: var(--tenho-cor); filter: brightness(1.2); }
-
-/* Ações do card */
-.card-acoes { display: flex; gap: 8px; flex-wrap: wrap; }
-
-.btn-sm {
-  padding: 7px 13px; border-radius: 8px; border: none;
-  font-family: var(--font-cond); font-size: 13px; font-weight: 600;
-  cursor: pointer; letter-spacing: .3px;
-  transition: transform .12s, filter .12s;
-}
-.btn-sm:hover { transform: translateY(-1px); filter: brightness(1.15); }
-.btn-sm.marcar-tenho  { background: var(--tenho-bg); color: var(--tenho-cor); border: 1px solid var(--tenho-borda); }
-.btn-sm.marcar-falta  { background: var(--falta-bg); color: var(--falta-cor); border: 1px solid var(--falta-borda); }
+.btn-card:hover{transform:translateY(-1px);filter:brightness(1.15)}
+.btn-card.marcar-tenho{background:rgba(78,255,145,.12);color:#4eff91;border:1.5px solid rgba(78,255,145,.25)}
+.btn-card.marcar-falta{background:rgba(255,107,107,.1);color:#ff8888;border:1.5px solid rgba(255,107,107,.2)}
 
 /* ── TOAST ── */
-.toast {
-  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
-  background: var(--azul3); border: 1px solid var(--ouro);
-  color: var(--branco); font-family: var(--font-cond); font-size: 15px; font-weight: 600;
-  padding: 12px 24px; border-radius: 12px; z-index: 9999;
-  transition: transform .3s cubic-bezier(.34,1.56,.64,1), opacity .3s;
-  opacity: 0; pointer-events: none;
+.toast{
+  position:fixed;bottom:24px;left:50%;
+  transform:translateX(-50%) translateY(80px);
+  background:rgba(22,14,42,.95);
+  border:2px solid;
+  color:#fff;font-family:var(--font-body);font-size:14px;font-weight:800;
+  padding:12px 24px;border-radius:16px;z-index:9999;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .3s;
+  opacity:0;pointer-events:none;white-space:nowrap;
+  box-shadow:0 8px 32px rgba(0,0,0,.5);
 }
-.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.toast-ok{border-color:#4eff91;box-shadow:0 8px 32px rgba(78,255,145,.2)}
+.toast.toast-err{border-color:#ff8888;box-shadow:0 8px 32px rgba(255,107,107,.2)}
 
-/* ── SEM RESULTADO ── */
-.sem-resultado {
-  text-align: center; padding: 60px 20px;
-  font-family: var(--font-cond); font-size: 20px; color: var(--cinza);
+/* celebração confete */
+.confete{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  pointer-events:none;z-index:9998;overflow:hidden;
+}
+.c-piece{
+  position:absolute;top:-10px;
+  width:8px;height:8px;border-radius:2px;
+  animation:cair 1.2s ease-in forwards;
+}
+@keyframes cair{
+  0%{opacity:1;transform:translateY(0) rotate(0)}
+  100%{opacity:0;transform:translateY(100vh) rotate(720deg)}
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 640px) {
-  .stats { grid-template-columns: repeat(2, 1fr); }
-  .titulo-bloco h1 { font-size: 22px; }
-  .trophy { font-size: 34px; }
-  .card-stats .mini-prog { display: none; }
-  .btn { padding: 8px 11px; font-size: 13px; }
-  .stat-valor { font-size: 32px; }
+.sem-resultado{
+  text-align:center;padding:80px 20px;
+  font-family:var(--font-title);font-size:22px;
+  color:rgba(255,255,255,.3);
 }
-@media (max-width: 400px) {
-  .card-stats { gap: 6px; }
-  .pill { font-size: 12px; padding: 3px 8px; }
+
+/* RESPONSIVE */
+@media(max-width:640px){
+  .paises-grid{grid-template-columns:1fr}
+  .logo-icon{font-size:36px}
+  .logo-text h1{font-size:20px}
+  .hdr-stats{gap:5px}
+  .hstat{min-width:60px;padding:5px 10px}
+  .hstat-val{font-size:18px}
+  .pais-flag{font-size:34px}
+}
+@media(max-width:400px){
+  .btn{padding:8px 11px;font-size:12px}
 }
 </style>
 </head>
 <body>
 
+<!-- ORBS DE FUNDO -->
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="orb orb4"></div>
+</div>
+
+<!-- CONFETES (injetados por JS) -->
+<div class="confete" id="confete"></div>
+
 <!-- HEADER -->
 <header>
-  <div class="header-top">
-    <div class="logo-area">
-      <div class="trophy">🏆</div>
-      <div class="titulo-bloco">
-        <h1>FIGURINHAS COPA 2026</h1>
-        <p>CONTROLE PESSOAL · FAMÍLIA · OFFLINE</p>
+  <div class="hdr-inner">
+    <div class="hdr-top">
+      <div class="logo">
+        <div class="logo-icon">⚽</div>
+        <div class="logo-text">
+          <h1>FIGURINHAS COPA 2026</h1>
+          <p>Controle pessoal · família · offline</p>
+        </div>
+      </div>
+      <div class="hdr-stats">
+        <div class="hstat"><span class="hstat-val" id="tenhoTotal">0</span><span class="hstat-lbl">Tenho</span></div>
+        <div class="hstat"><span class="hstat-val" id="faltaTotal">0</span><span class="hstat-lbl">Faltam</span></div>
+        <div class="hstat"><span class="hstat-val" id="totalGeral">0</span><span class="hstat-lbl">Total</span></div>
+        <div class="hstat"><span class="hstat-val" id="percentual">0%</span><span class="hstat-lbl">Progresso</span></div>
       </div>
     </div>
-  </div>
-
-  <div class="topbar">
-    <div class="search-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-      </svg>
-      <input id="busca" type="search" placeholder="Buscar seleção, código ou figurinha…">
+    <div class="prog-global">
+      <div class="prog-global-fill" id="progBar" style="width:0%"></div>
     </div>
-
-    <select id="filtro">
-      <option value="todas">Mostrar tudo</option>
-      <option value="faltando">Só com faltantes</option>
-      <option value="completas">Só completas</option>
-    </select>
-
-    <button class="btn btn-ouro" onclick="abrirPainelLista()">📋 Lista filtrada</button>
-    <button class="btn btn-verde" onclick="gerarLista()">📄 Lista geral</button>
-    <button class="btn btn-ghost" onclick="exportar()">💾 Exportar</button>
-    <button class="btn btn-ghost" onclick="importar()">📥 Importar</button>
-    <button class="btn btn-ghost" onclick="baixarCopia()">⬇️ Baixar cópia</button>
-    <button class="btn btn-perigo" onclick="resetar()">↺ Restaurar</button>
   </div>
 </header>
 
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="search-wrap">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    </svg>
+    <input id="busca" type="search" placeholder="Buscar seleção ou figurinha…">
+  </div>
+  <select id="filtro">
+    <option value="todas">🌍 Todas</option>
+    <option value="faltando">❌ Com faltantes</option>
+    <option value="completas">✅ Completas</option>
+  </select>
+  <button class="btn btn-festa" onclick="abrirPainelLista()">📋 Lista filtrada</button>
+  <button class="btn btn-azul"  onclick="gerarLista()">📄 Lista geral</button>
+  <button class="btn btn-ghost" onclick="exportar()">💾 Exportar</button>
+  <button class="btn btn-ghost" onclick="importar()">📥 Importar</button>
+  <button class="btn btn-ghost" onclick="baixarCopia()">⬇️ Baixar cópia</button>
+  <button class="btn btn-perigo" onclick="resetar()">↺ Restaurar</button>
+</div>
+
 <!-- MAIN -->
 <main>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat"><div class="stat-label">✅ Tenho</div><div class="stat-valor" id="tenhoTotal">0</div></div>
-    <div class="stat"><div class="stat-label">❌ Faltam</div><div class="stat-valor" id="faltaTotal">0</div></div>
-    <div class="stat"><div class="stat-label">📦 Total</div><div class="stat-valor" id="totalGeral">0</div></div>
-    <div class="stat"><div class="stat-label">📈 Progresso</div><div class="stat-valor" id="percentual">0%</div></div>
-  </div>
-
-  <!-- BARRA DE PROGRESSO -->
-  <div class="progresso-wrap">
-    <div class="prog-labels">
-      <span>PROGRESSO DO ÁLBUM</span>
-      <span id="progLabel">0 de 0 figurinhas</span>
-    </div>
-    <div class="prog-bar-outer">
-      <div class="prog-bar-inner" id="progBar" style="width:0%"></div>
-    </div>
-  </div>
-
-  <!-- PAINEL LISTA FILTRADA -->
+  <!-- PAINEL LISTA -->
   <div id="painelLista" class="painel-lista" style="display:none">
     <h3>🎯 GERAR LISTA DE FALTANTES POR SELEÇÃO</h3>
     <div class="acoes-painel">
       <button class="btn btn-ghost" onclick="marcarTodosLista(true)">✔ Selecionar todas</button>
-      <button class="btn btn-ghost" onclick="marcarTodosLista(false)">✕ Limpar seleção</button>
-      <button class="btn btn-ouro"  onclick="selecionarSoComFaltantes()">🎯 Só com faltantes</button>
-      <button class="btn btn-verde" onclick="gerarListaSelecionada()">📝 Gerar lista</button>
+      <button class="btn btn-ghost" onclick="marcarTodosLista(false)">✕ Limpar</button>
+      <button class="btn btn-festa" onclick="selecionarSoComFaltantes()">🎯 Só com faltantes</button>
+      <button class="btn btn-azul"  onclick="gerarListaSelecionada()">📝 Gerar lista</button>
     </div>
     <div id="opcoesLista" class="checkgrid"></div>
     <div id="caixaLista" class="box-lista" style="display:none">
@@ -522,234 +501,326 @@ details[open] .card-summary .chevron { transform: rotate(180deg); }
     </div>
   </div>
 
-  <!-- APP -->
   <div id="app"></div>
 </main>
 
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-/* ── DADOS DO ÁLBUM ── */
-const ALBUM = [{"secao": "Início do Álbum", "nome": "Início do Álbum", "codigo": "START", "itens": ["A00", "FWC2", "FWC3", "FWC5", "FWC6", "FWC8"]}, {"secao": "Seleções Campeãs", "nome": "FWC - Campeãs", "codigo": "FWC", "itens": ["FWC10", "FWC14", "FWC16", "FWC17", "FWC18", "FWC19"]}, {"secao": "Coca-Cola", "nome": "Coca-Cola", "codigo": "CC", "itens": ["CC2", "CC5", "CC10", "CC13"]}, {"secao": "Seleções", "nome": "Mexico", "codigo": "MEX", "itens": ["MEX1", "MEX2", "MEX3", "MEX4", "MEX5", "MEX6", "MEX7", "MEX8", "MEX9", "MEX10", "MEX11", "MEX12", "MEX13", "MEX14", "MEX15", "MEX16", "MEX17", "MEX18", "MEX19", "MEX20"]}, {"secao": "Seleções", "nome": "South Africa", "codigo": "RSA", "itens": ["RSA1", "RSA2", "RSA3", "RSA4", "RSA5", "RSA6", "RSA7", "RSA8", "RSA9", "RSA10", "RSA11", "RSA12", "RSA13", "RSA14", "RSA15", "RSA16", "RSA17", "RSA18", "RSA19", "RSA20"]}, {"secao": "Seleções", "nome": "Korea Republic", "codigo": "KOR", "itens": ["KOR1", "KOR2", "KOR3", "KOR4", "KOR5", "KOR6", "KOR7", "KOR8", "KOR9", "KOR10", "KOR11", "KOR12", "KOR13", "KOR14", "KOR15", "KOR16", "KOR17", "KOR18", "KOR19", "KOR20"]}, {"secao": "Seleções", "nome": "Czech Republic", "codigo": "CZE", "itens": ["CZE1", "CZE2", "CZE3", "CZE4", "CZE5", "CZE6", "CZE7", "CZE8", "CZE9", "CZE10", "CZE11", "CZE12", "CZE13", "CZE14", "CZE15", "CZE16", "CZE17", "CZE18", "CZE19", "CZE20"]}, {"secao": "Seleções", "nome": "Canada", "codigo": "CAN", "itens": ["CAN1", "CAN2", "CAN3", "CAN4", "CAN5", "CAN6", "CAN7", "CAN8", "CAN9", "CAN10", "CAN11", "CAN12", "CAN13", "CAN14", "CAN15", "CAN16", "CAN17", "CAN18", "CAN19", "CAN20"]}, {"secao": "Seleções", "nome": "Bosnia and Herzegovina", "codigo": "BIH", "itens": ["BIH1", "BIH2", "BIH3", "BIH4", "BIH5", "BIH6", "BIH7", "BIH8", "BIH9", "BIH10", "BIH11", "BIH12", "BIH13", "BIH14", "BIH15", "BIH16", "BIH17", "BIH18", "BIH19", "BIH20"]}, {"secao": "Seleções", "nome": "Qatar", "codigo": "QAT", "itens": ["QAT1", "QAT2", "QAT3", "QAT4", "QAT5", "QAT6", "QAT7", "QAT8", "QAT9", "QAT10", "QAT11", "QAT12", "QAT13", "QAT14", "QAT15", "QAT16", "QAT17", "QAT18", "QAT19", "QAT20"]}, {"secao": "Seleções", "nome": "Switzerland", "codigo": "SUI", "itens": ["SUI1", "SUI2", "SUI3", "SUI4", "SUI5", "SUI6", "SUI7", "SUI8", "SUI9", "SUI10", "SUI11", "SUI12", "SUI13", "SUI14", "SUI15", "SUI16", "SUI17", "SUI18", "SUI19", "SUI20"]}, {"secao": "Seleções", "nome": "Brazil", "codigo": "BRA", "itens": ["BRA1", "BRA2", "BRA3", "BRA4", "BRA5", "BRA6", "BRA7", "BRA8", "BRA9", "BRA10", "BRA11", "BRA12", "BRA13", "BRA14", "BRA15", "BRA16", "BRA17", "BRA18", "BRA19", "BRA20"]}, {"secao": "Seleções", "nome": "Morocco", "codigo": "MAR", "itens": ["MAR1", "MAR2", "MAR3", "MAR4", "MAR5", "MAR6", "MAR7", "MAR8", "MAR9", "MAR10", "MAR11", "MAR12", "MAR13", "MAR14", "MAR15", "MAR16", "MAR17", "MAR18", "MAR19", "MAR20"]}, {"secao": "Seleções", "nome": "Haiti", "codigo": "HAI", "itens": ["HAI1", "HAI2", "HAI3", "HAI4", "HAI5", "HAI6", "HAI7", "HAI8", "HAI9", "HAI10", "HAI11", "HAI12", "HAI13", "HAI14", "HAI15", "HAI16", "HAI17", "HAI18", "HAI19", "HAI20"]}, {"secao": "Seleções", "nome": "Scotland", "codigo": "SCO", "itens": ["SCO1", "SCO2", "SCO3", "SCO4", "SCO5", "SCO6", "SCO7", "SCO8", "SCO9", "SCO10", "SCO11", "SCO12", "SCO13", "SCO14", "SCO15", "SCO16", "SCO17", "SCO18", "SCO19", "SCO20"]}, {"secao": "Seleções", "nome": "United States", "codigo": "USA", "itens": ["USA1", "USA2", "USA3", "USA4", "USA5", "USA6", "USA7", "USA8", "USA9", "USA10", "USA11", "USA12", "USA13", "USA14", "USA15", "USA16", "USA17", "USA18", "USA19", "USA20"]}, {"secao": "Seleções", "nome": "Paraguay", "codigo": "PAR", "itens": ["PAR1", "PAR2", "PAR3", "PAR4", "PAR5", "PAR6", "PAR7", "PAR8", "PAR9", "PAR10", "PAR11", "PAR12", "PAR13", "PAR14", "PAR15", "PAR16", "PAR17", "PAR18", "PAR19", "PAR20"]}, {"secao": "Seleções", "nome": "Australia", "codigo": "AUS", "itens": ["AUS1", "AUS2", "AUS3", "AUS4", "AUS5", "AUS6", "AUS7", "AUS8", "AUS9", "AUS10", "AUS11", "AUS12", "AUS13", "AUS14", "AUS15", "AUS16", "AUS17", "AUS18", "AUS19", "AUS20"]}, {"secao": "Seleções", "nome": "Turkey", "codigo": "TUR", "itens": ["TUR1", "TUR2", "TUR3", "TUR4", "TUR5", "TUR6", "TUR7", "TUR8", "TUR9", "TUR10", "TUR11", "TUR12", "TUR13", "TUR14", "TUR15", "TUR16", "TUR17", "TUR18", "TUR19", "TUR20"]}, {"secao": "Seleções", "nome": "Germany", "codigo": "GER", "itens": ["GER1", "GER2", "GER3", "GER4", "GER5", "GER6", "GER7", "GER8", "GER9", "GER10", "GER11", "GER12", "GER13", "GER14", "GER15", "GER16", "GER17", "GER18", "GER19", "GER20"]}, {"secao": "Seleções", "nome": "Curaçao", "codigo": "CUW", "itens": ["CUW1", "CUW2", "CUW3", "CUW4", "CUW5", "CUW6", "CUW7", "CUW8", "CUW9", "CUW10", "CUW11", "CUW12", "CUW13", "CUW14", "CUW15", "CUW16", "CUW17", "CUW18", "CUW19", "CUW20"]}, {"secao": "Seleções", "nome": "Côte d'Ivoire", "codigo": "CIV", "itens": ["CIV1", "CIV2", "CIV3", "CIV4", "CIV5", "CIV6", "CIV7", "CIV8", "CIV9", "CIV10", "CIV11", "CIV12", "CIV13", "CIV14", "CIV15", "CIV16", "CIV17", "CIV18", "CIV19", "CIV20"]}, {"secao": "Seleções", "nome": "Ecuador", "codigo": "ECU", "itens": ["ECU1", "ECU2", "ECU3", "ECU4", "ECU5", "ECU6", "ECU7", "ECU8", "ECU9", "ECU10", "ECU11", "ECU12", "ECU13", "ECU14", "ECU15", "ECU16", "ECU17", "ECU18", "ECU19", "ECU20"]}, {"secao": "Seleções", "nome": "Netherlands", "codigo": "NED", "itens": ["NED1", "NED2", "NED3", "NED4", "NED5", "NED6", "NED7", "NED8", "NED9", "NED10", "NED11", "NED12", "NED13", "NED14", "NED15", "NED16", "NED17", "NED18", "NED19", "NED20"]}, {"secao": "Seleções", "nome": "Japan", "codigo": "JPN", "itens": ["JPN1", "JPN2", "JPN3", "JPN4", "JPN5", "JPN6", "JPN7", "JPN8", "JPN9", "JPN10", "JPN11", "JPN12", "JPN13", "JPN14", "JPN15", "JPN16", "JPN17", "JPN18", "JPN19", "JPN20"]}, {"secao": "Seleções", "nome": "Sweden", "codigo": "SWE", "itens": ["SWE1", "SWE2", "SWE3", "SWE4", "SWE5", "SWE6", "SWE7", "SWE8", "SWE9", "SWE10", "SWE11", "SWE12", "SWE13", "SWE14", "SWE15", "SWE16", "SWE17", "SWE18", "SWE19", "SWE20"]}, {"secao": "Seleções", "nome": "Tunisia", "codigo": "TUN", "itens": ["TUN1", "TUN2", "TUN3", "TUN4", "TUN5", "TUN6", "TUN7", "TUN8", "TUN9", "TUN10", "TUN11", "TUN12", "TUN13", "TUN14", "TUN15", "TUN16", "TUN17", "TUN18", "TUN19", "TUN20"]}, {"secao": "Seleções", "nome": "Belgium", "codigo": "BEL", "itens": ["BEL1", "BEL2", "BEL3", "BEL4", "BEL5", "BEL6", "BEL7", "BEL8", "BEL9", "BEL10", "BEL11", "BEL12", "BEL13", "BEL14", "BEL15", "BEL16", "BEL17", "BEL18", "BEL19", "BEL20"]}, {"secao": "Seleções", "nome": "Egypt", "codigo": "EGY", "itens": ["EGY1", "EGY2", "EGY3", "EGY4", "EGY5", "EGY6", "EGY7", "EGY8", "EGY9", "EGY10", "EGY11", "EGY12", "EGY13", "EGY14", "EGY15", "EGY16", "EGY17", "EGY18", "EGY19", "EGY20"]}, {"secao": "Seleções", "nome": "Iran", "codigo": "IRN", "itens": ["IRN1", "IRN2", "IRN3", "IRN4", "IRN5", "IRN6", "IRN7", "IRN8", "IRN9", "IRN10", "IRN11", "IRN12", "IRN13", "IRN14", "IRN15", "IRN16", "IRN17", "IRN18", "IRN19", "IRN20"]}, {"secao": "Seleções", "nome": "New Zealand", "codigo": "NZL", "itens": ["NZL1", "NZL2", "NZL3", "NZL4", "NZL5", "NZL6", "NZL7", "NZL8", "NZL9", "NZL10", "NZL11", "NZL12", "NZL13", "NZL14", "NZL15", "NZL16", "NZL17", "NZL18", "NZL19", "NZL20"]}, {"secao": "Seleções", "nome": "Spain", "codigo": "ESP", "itens": ["ESP1", "ESP2", "ESP3", "ESP4", "ESP5", "ESP6", "ESP7", "ESP8", "ESP9", "ESP10", "ESP11", "ESP12", "ESP13", "ESP14", "ESP15", "ESP16", "ESP17", "ESP18", "ESP19", "ESP20"]}, {"secao": "Seleções", "nome": "Cape Verde", "codigo": "CPV", "itens": ["CPV1", "CPV2", "CPV3", "CPV4", "CPV5", "CPV6", "CPV7", "CPV8", "CPV9", "CPV10", "CPV11", "CPV12", "CPV13", "CPV14", "CPV15", "CPV16", "CPV17", "CPV18", "CPV19", "CPV20"]}, {"secao": "Seleções", "nome": "Saudi Arabia", "codigo": "KSA", "itens": ["KSA1", "KSA2", "KSA3", "KSA4", "KSA5", "KSA6", "KSA7", "KSA8", "KSA9", "KSA10", "KSA11", "KSA12", "KSA13", "KSA14", "KSA15", "KSA16", "KSA17", "KSA18", "KSA19", "KSA20"]}, {"secao": "Seleções", "nome": "Uruguay", "codigo": "URU", "itens": ["URU1", "URU2", "URU3", "URU4", "URU5", "URU6", "URU7", "URU8", "URU9", "URU10", "URU11", "URU12", "URU13", "URU14", "URU15", "URU16", "URU17", "URU18", "URU19", "URU20"]}, {"secao": "Seleções", "nome": "France", "codigo": "FRA", "itens": ["FRA1", "FRA2", "FRA3", "FRA4", "FRA5", "FRA6", "FRA7", "FRA8", "FRA9", "FRA10", "FRA11", "FRA12", "FRA13", "FRA14", "FRA15", "FRA16", "FRA17", "FRA18", "FRA19", "FRA20"]}, {"secao": "Seleções", "nome": "Senegal", "codigo": "SEN", "itens": ["SEN1", "SEN2", "SEN3", "SEN4", "SEN5", "SEN6", "SEN7", "SEN8", "SEN9", "SEN10", "SEN11", "SEN12", "SEN13", "SEN14", "SEN15", "SEN16", "SEN17", "SEN18", "SEN19", "SEN20"]}, {"secao": "Seleções", "nome": "Iraq", "codigo": "IRQ", "itens": ["IRQ1", "IRQ2", "IRQ3", "IRQ4", "IRQ5", "IRQ6", "IRQ7", "IRQ8", "IRQ9", "IRQ10", "IRQ11", "IRQ12", "IRQ13", "IRQ14", "IRQ15", "IRQ16", "IRQ17", "IRQ18", "IRQ19", "IRQ20"]}, {"secao": "Seleções", "nome": "Norway", "codigo": "NOR", "itens": ["NOR1", "NOR2", "NOR3", "NOR4", "NOR5", "NOR6", "NOR7", "NOR8", "NOR9", "NOR10", "NOR11", "NOR12", "NOR13", "NOR14", "NOR15", "NOR16", "NOR17", "NOR18", "NOR19", "NOR20"]}, {"secao": "Seleções", "nome": "Argentina", "codigo": "ARG", "itens": ["ARG1", "ARG2", "ARG3", "ARG4", "ARG5", "ARG6", "ARG7", "ARG8", "ARG9", "ARG10", "ARG11", "ARG12", "ARG13", "ARG14", "ARG15", "ARG16", "ARG17", "ARG18", "ARG19", "ARG20"]}, {"secao": "Seleções", "nome": "Algeria", "codigo": "ALG", "itens": ["ALG1", "ALG2", "ALG3", "ALG4", "ALG5", "ALG6", "ALG7", "ALG8", "ALG9", "ALG10", "ALG11", "ALG12", "ALG13", "ALG14", "ALG15", "ALG16", "ALG17", "ALG18", "ALG19", "ALG20"]}, {"secao": "Seleções", "nome": "Austria", "codigo": "AUT", "itens": ["AUT1", "AUT2", "AUT3", "AUT4", "AUT5", "AUT6", "AUT7", "AUT8", "AUT9", "AUT10", "AUT11", "AUT12", "AUT13", "AUT14", "AUT15", "AUT16", "AUT17", "AUT18", "AUT19", "AUT20"]}, {"secao": "Seleções", "nome": "Jordan", "codigo": "JOR", "itens": ["JOR1", "JOR2", "JOR3", "JOR4", "JOR5", "JOR6", "JOR7", "JOR8", "JOR9", "JOR10", "JOR11", "JOR12", "JOR13", "JOR14", "JOR15", "JOR16", "JOR17", "JOR18", "JOR19", "JOR20"]}, {"secao": "Seleções", "nome": "Portugal", "codigo": "POR", "itens": ["POR1", "POR2", "POR3", "POR4", "POR5", "POR6", "POR7", "POR8", "POR9", "POR10", "POR11", "POR12", "POR13", "POR14", "POR15", "POR16", "POR17", "POR18", "POR19", "POR20"]}, {"secao": "Seleções", "nome": "DR Congo", "codigo": "COD", "itens": ["COD1", "COD2", "COD3", "COD4", "COD5", "COD6", "COD7", "COD8", "COD9", "COD10", "COD11", "COD12", "COD13", "COD14", "COD15", "COD16", "COD17", "COD18", "COD19", "COD20"]}, {"secao": "Seleções", "nome": "Uzbekistan", "codigo": "UZB", "itens": ["UZB1", "UZB2", "UZB3", "UZB4", "UZB5", "UZB6", "UZB7", "UZB8", "UZB9", "UZB10", "UZB11", "UZB12", "UZB13", "UZB14", "UZB15", "UZB16", "UZB17", "UZB18", "UZB19", "UZB20"]}, {"secao": "Seleções", "nome": "Colombia", "codigo": "COL", "itens": ["COL1", "COL2", "COL3", "COL4", "COL5", "COL6", "COL7", "COL8", "COL9", "COL10", "COL11", "COL12", "COL13", "COL14", "COL15", "COL16", "COL17", "COL18", "COL19", "COL20"]}, {"secao": "Seleções", "nome": "England", "codigo": "ENG", "itens": ["ENG1", "ENG2", "ENG3", "ENG4", "ENG5", "ENG6", "ENG7", "ENG8", "ENG9", "ENG10", "ENG11", "ENG12", "ENG13", "ENG14", "ENG15", "ENG16", "ENG17", "ENG18", "ENG19", "ENG20"]}, {"secao": "Seleções", "nome": "Croatia", "codigo": "CRO", "itens": ["CRO1", "CRO2", "CRO3", "CRO4", "CRO5", "CRO6", "CRO7", "CRO8", "CRO9", "CRO10", "CRO11", "CRO12", "CRO13", "CRO14", "CRO15", "CRO16", "CRO17", "CRO18", "CRO19", "CRO20"]}, {"secao": "Seleções", "nome": "Ghana", "codigo": "GHA", "itens": ["GHA1", "GHA2", "GHA3", "GHA4", "GHA5", "GHA6", "GHA7", "GHA8", "GHA9", "GHA10", "GHA11", "GHA12", "GHA13", "GHA14", "GHA15", "GHA16", "GHA17", "GHA18", "GHA19", "GHA20"]}, {"secao": "Seleções", "nome": "Panama", "codigo": "PAN", "itens": ["PAN1", "PAN2", "PAN3", "PAN4", "PAN5", "PAN6", "PAN7", "PAN8", "PAN9", "PAN10", "PAN11", "PAN12", "PAN13", "PAN14", "PAN15", "PAN16", "PAN17", "PAN18", "PAN19", "PAN20"]}];
+/* ══════════════════════════════════════════
+   DADOS
+══════════════════════════════════════════ */
+const ALBUM = [
+  {"secao":"Início do Álbum","nome":"Início do Álbum","codigo":"START","bandeira":"🏟️","grad":"linear-gradient(135deg,#667eea,#764ba2)","itens":["A00","FWC2","FWC3","FWC5","FWC6","FWC8"]},
+  {"secao":"Seleções Campeãs","nome":"FWC - Campeãs","codigo":"FWC","bandeira":"🏆","grad":"linear-gradient(135deg,#f7971e,#ffd200)","itens":["FWC10","FWC14","FWC16","FWC17","FWC18","FWC19"]},
+  {"secao":"Coca-Cola","nome":"Coca-Cola","codigo":"CC","bandeira":"🥤","grad":"linear-gradient(135deg,#cb2d3e,#ef473a)","itens":["CC2","CC5","CC10","CC13"]},
+  {"secao":"Seleções","nome":"Mexico","codigo":"MEX","bandeira":"🇲🇽","grad":"linear-gradient(135deg,#11998e,#38ef7d)","itens":["MEX1","MEX2","MEX3","MEX4","MEX5","MEX6","MEX7","MEX8","MEX9","MEX10","MEX11","MEX12","MEX13","MEX14","MEX15","MEX16","MEX17","MEX18","MEX19","MEX20"]},
+  {"secao":"Seleções","nome":"South Africa","codigo":"RSA","bandeira":"🇿🇦","grad":"linear-gradient(135deg,#1a9850,#f4a83a)","itens":["RSA1","RSA2","RSA3","RSA4","RSA5","RSA6","RSA7","RSA8","RSA9","RSA10","RSA11","RSA12","RSA13","RSA14","RSA15","RSA16","RSA17","RSA18","RSA19","RSA20"]},
+  {"secao":"Seleções","nome":"Korea Republic","codigo":"KOR","bandeira":"🇰🇷","grad":"linear-gradient(135deg,#c94b4b,#4b134f)","itens":["KOR1","KOR2","KOR3","KOR4","KOR5","KOR6","KOR7","KOR8","KOR9","KOR10","KOR11","KOR12","KOR13","KOR14","KOR15","KOR16","KOR17","KOR18","KOR19","KOR20"]},
+  {"secao":"Seleções","nome":"Czech Republic","codigo":"CZE","bandeira":"🇨🇿","grad":"linear-gradient(135deg,#1565c0,#d32f2f)","itens":["CZE1","CZE2","CZE3","CZE4","CZE5","CZE6","CZE7","CZE8","CZE9","CZE10","CZE11","CZE12","CZE13","CZE14","CZE15","CZE16","CZE17","CZE18","CZE19","CZE20"]},
+  {"secao":"Seleções","nome":"Canada","codigo":"CAN","bandeira":"🇨🇦","grad":"linear-gradient(135deg,#e53935,#fff)","itens":["CAN1","CAN2","CAN3","CAN4","CAN5","CAN6","CAN7","CAN8","CAN9","CAN10","CAN11","CAN12","CAN13","CAN14","CAN15","CAN16","CAN17","CAN18","CAN19","CAN20"]},
+  {"secao":"Seleções","nome":"Bosnia Herzegovina","codigo":"BIH","bandeira":"🇧🇦","grad":"linear-gradient(135deg,#1a237e,#ffd600)","itens":["BIH1","BIH2","BIH3","BIH4","BIH5","BIH6","BIH7","BIH8","BIH9","BIH10","BIH11","BIH12","BIH13","BIH14","BIH15","BIH16","BIH17","BIH18","BIH19","BIH20"]},
+  {"secao":"Seleções","nome":"Qatar","codigo":"QAT","bandeira":"🇶🇦","grad":"linear-gradient(135deg,#6a0572,#ab1e7a)","itens":["QAT1","QAT2","QAT3","QAT4","QAT5","QAT6","QAT7","QAT8","QAT9","QAT10","QAT11","QAT12","QAT13","QAT14","QAT15","QAT16","QAT17","QAT18","QAT19","QAT20"]},
+  {"secao":"Seleções","nome":"Switzerland","codigo":"SUI","bandeira":"🇨🇭","grad":"linear-gradient(135deg,#c62828,#fff)","itens":["SUI1","SUI2","SUI3","SUI4","SUI5","SUI6","SUI7","SUI8","SUI9","SUI10","SUI11","SUI12","SUI13","SUI14","SUI15","SUI16","SUI17","SUI18","SUI19","SUI20"]},
+  {"secao":"Seleções","nome":"Brazil","codigo":"BRA","bandeira":"🇧🇷","grad":"linear-gradient(135deg,#009c3b,#ffdf00)","itens":["BRA1","BRA2","BRA3","BRA4","BRA5","BRA6","BRA7","BRA8","BRA9","BRA10","BRA11","BRA12","BRA13","BRA14","BRA15","BRA16","BRA17","BRA18","BRA19","BRA20"]},
+  {"secao":"Seleções","nome":"Morocco","codigo":"MAR","bandeira":"🇲🇦","grad":"linear-gradient(135deg,#c62828,#2e7d32)","itens":["MAR1","MAR2","MAR3","MAR4","MAR5","MAR6","MAR7","MAR8","MAR9","MAR10","MAR11","MAR12","MAR13","MAR14","MAR15","MAR16","MAR17","MAR18","MAR19","MAR20"]},
+  {"secao":"Seleções","nome":"Haiti","codigo":"HAI","bandeira":"🇭🇹","grad":"linear-gradient(135deg,#003087,#d62828)","itens":["HAI1","HAI2","HAI3","HAI4","HAI5","HAI6","HAI7","HAI8","HAI9","HAI10","HAI11","HAI12","HAI13","HAI14","HAI15","HAI16","HAI17","HAI18","HAI19","HAI20"]},
+  {"secao":"Seleções","nome":"Scotland","codigo":"SCO","bandeira":"🏴󠁧󠁢󠁳󠁣󠁴󠁿","grad":"linear-gradient(135deg,#003078,#fff)","itens":["SCO1","SCO2","SCO3","SCO4","SCO5","SCO6","SCO7","SCO8","SCO9","SCO10","SCO11","SCO12","SCO13","SCO14","SCO15","SCO16","SCO17","SCO18","SCO19","SCO20"]},
+  {"secao":"Seleções","nome":"United States","codigo":"USA","bandeira":"🇺🇸","grad":"linear-gradient(135deg,#b22234,#3c3b6e)","itens":["USA1","USA2","USA3","USA4","USA5","USA6","USA7","USA8","USA9","USA10","USA11","USA12","USA13","USA14","USA15","USA16","USA17","USA18","USA19","USA20"]},
+  {"secao":"Seleções","nome":"Paraguay","codigo":"PAR","bandeira":"🇵🇾","grad":"linear-gradient(135deg,#d62828,#fff,#0033a0)","itens":["PAR1","PAR2","PAR3","PAR4","PAR5","PAR6","PAR7","PAR8","PAR9","PAR10","PAR11","PAR12","PAR13","PAR14","PAR15","PAR16","PAR17","PAR18","PAR19","PAR20"]},
+  {"secao":"Seleções","nome":"Australia","codigo":"AUS","bandeira":"🇦🇺","grad":"linear-gradient(135deg,#00008b,#cc0000)","itens":["AUS1","AUS2","AUS3","AUS4","AUS5","AUS6","AUS7","AUS8","AUS9","AUS10","AUS11","AUS12","AUS13","AUS14","AUS15","AUS16","AUS17","AUS18","AUS19","AUS20"]},
+  {"secao":"Seleções","nome":"Turkey","codigo":"TUR","bandeira":"🇹🇷","grad":"linear-gradient(135deg,#e30a17,#fff)","itens":["TUR1","TUR2","TUR3","TUR4","TUR5","TUR6","TUR7","TUR8","TUR9","TUR10","TUR11","TUR12","TUR13","TUR14","TUR15","TUR16","TUR17","TUR18","TUR19","TUR20"]},
+  {"secao":"Seleções","nome":"Germany","codigo":"GER","bandeira":"🇩🇪","grad":"linear-gradient(135deg,#1a1a1a,#ffce00)","itens":["GER1","GER2","GER3","GER4","GER5","GER6","GER7","GER8","GER9","GER10","GER11","GER12","GER13","GER14","GER15","GER16","GER17","GER18","GER19","GER20"]},
+  {"secao":"Seleções","nome":"Curaçao","codigo":"CUW","bandeira":"🇨🇼","grad":"linear-gradient(135deg,#003087,#f7c800)","itens":["CUW1","CUW2","CUW3","CUW4","CUW5","CUW6","CUW7","CUW8","CUW9","CUW10","CUW11","CUW12","CUW13","CUW14","CUW15","CUW16","CUW17","CUW18","CUW19","CUW20"]},
+  {"secao":"Seleções","nome":"Côte d'Ivoire","codigo":"CIV","bandeira":"🇨🇮","grad":"linear-gradient(135deg,#f77f00,#fff,#009a44)","itens":["CIV1","CIV2","CIV3","CIV4","CIV5","CIV6","CIV7","CIV8","CIV9","CIV10","CIV11","CIV12","CIV13","CIV14","CIV15","CIV16","CIV17","CIV18","CIV19","CIV20"]},
+  {"secao":"Seleções","nome":"Ecuador","codigo":"ECU","bandeira":"🇪🇨","grad":"linear-gradient(135deg,#ffdd00,#0033a0)","itens":["ECU1","ECU2","ECU3","ECU4","ECU5","ECU6","ECU7","ECU8","ECU9","ECU10","ECU11","ECU12","ECU13","ECU14","ECU15","ECU16","ECU17","ECU18","ECU19","ECU20"]},
+  {"secao":"Seleções","nome":"Netherlands","codigo":"NED","bandeira":"🇳🇱","grad":"linear-gradient(135deg,#ae1c28,#ff8c00)","itens":["NED1","NED2","NED3","NED4","NED5","NED6","NED7","NED8","NED9","NED10","NED11","NED12","NED13","NED14","NED15","NED16","NED17","NED18","NED19","NED20"]},
+  {"secao":"Seleções","nome":"Japan","codigo":"JPN","bandeira":"🇯🇵","grad":"linear-gradient(135deg,#bc002d,#fff)","itens":["JPN1","JPN2","JPN3","JPN4","JPN5","JPN6","JPN7","JPN8","JPN9","JPN10","JPN11","JPN12","JPN13","JPN14","JPN15","JPN16","JPN17","JPN18","JPN19","JPN20"]},
+  {"secao":"Seleções","nome":"Sweden","codigo":"SWE","bandeira":"🇸🇪","grad":"linear-gradient(135deg,#006aa7,#fecc02)","itens":["SWE1","SWE2","SWE3","SWE4","SWE5","SWE6","SWE7","SWE8","SWE9","SWE10","SWE11","SWE12","SWE13","SWE14","SWE15","SWE16","SWE17","SWE18","SWE19","SWE20"]},
+  {"secao":"Seleções","nome":"Tunisia","codigo":"TUN","bandeira":"🇹🇳","grad":"linear-gradient(135deg,#e70013,#fff)","itens":["TUN1","TUN2","TUN3","TUN4","TUN5","TUN6","TUN7","TUN8","TUN9","TUN10","TUN11","TUN12","TUN13","TUN14","TUN15","TUN16","TUN17","TUN18","TUN19","TUN20"]},
+  {"secao":"Seleções","nome":"Belgium","codigo":"BEL","bandeira":"🇧🇪","grad":"linear-gradient(135deg,#1a1a1a,#ef3340,#fdda24)","itens":["BEL1","BEL2","BEL3","BEL4","BEL5","BEL6","BEL7","BEL8","BEL9","BEL10","BEL11","BEL12","BEL13","BEL14","BEL15","BEL16","BEL17","BEL18","BEL19","BEL20"]},
+  {"secao":"Seleções","nome":"Egypt","codigo":"EGY","bandeira":"🇪🇬","grad":"linear-gradient(135deg,#ce1126,#fff,#000)","itens":["EGY1","EGY2","EGY3","EGY4","EGY5","EGY6","EGY7","EGY8","EGY9","EGY10","EGY11","EGY12","EGY13","EGY14","EGY15","EGY16","EGY17","EGY18","EGY19","EGY20"]},
+  {"secao":"Seleções","nome":"Iran","codigo":"IRN","bandeira":"🇮🇷","grad":"linear-gradient(135deg,#239f40,#fff,#da0000)","itens":["IRN1","IRN2","IRN3","IRN4","IRN5","IRN6","IRN7","IRN8","IRN9","IRN10","IRN11","IRN12","IRN13","IRN14","IRN15","IRN16","IRN17","IRN18","IRN19","IRN20"]},
+  {"secao":"Seleções","nome":"New Zealand","codigo":"NZL","bandeira":"🇳🇿","grad":"linear-gradient(135deg,#00247d,#cc142b)","itens":["NZL1","NZL2","NZL3","NZL4","NZL5","NZL6","NZL7","NZL8","NZL9","NZL10","NZL11","NZL12","NZL13","NZL14","NZL15","NZL16","NZL17","NZL18","NZL19","NZL20"]},
+  {"secao":"Seleções","nome":"Spain","codigo":"ESP","bandeira":"🇪🇸","grad":"linear-gradient(135deg,#c60b1e,#ffc400)","itens":["ESP1","ESP2","ESP3","ESP4","ESP5","ESP6","ESP7","ESP8","ESP9","ESP10","ESP11","ESP12","ESP13","ESP14","ESP15","ESP16","ESP17","ESP18","ESP19","ESP20"]},
+  {"secao":"Seleções","nome":"Cape Verde","codigo":"CPV","bandeira":"🇨🇻","grad":"linear-gradient(135deg,#003893,#cf2027)","itens":["CPV1","CPV2","CPV3","CPV4","CPV5","CPV6","CPV7","CPV8","CPV9","CPV10","CPV11","CPV12","CPV13","CPV14","CPV15","CPV16","CPV17","CPV18","CPV19","CPV20"]},
+  {"secao":"Seleções","nome":"Saudi Arabia","codigo":"KSA","bandeira":"🇸🇦","grad":"linear-gradient(135deg,#006c35,#fff)","itens":["KSA1","KSA2","KSA3","KSA4","KSA5","KSA6","KSA7","KSA8","KSA9","KSA10","KSA11","KSA12","KSA13","KSA14","KSA15","KSA16","KSA17","KSA18","KSA19","KSA20"]},
+  {"secao":"Seleções","nome":"Uruguay","codigo":"URU","bandeira":"🇺🇾","grad":"linear-gradient(135deg,#5cb8e4,#fff)","itens":["URU1","URU2","URU3","URU4","URU5","URU6","URU7","URU8","URU9","URU10","URU11","URU12","URU13","URU14","URU15","URU16","URU17","URU18","URU19","URU20"]},
+  {"secao":"Seleções","nome":"France","codigo":"FRA","bandeira":"🇫🇷","grad":"linear-gradient(135deg,#002395,#fff,#ed2939)","itens":["FRA1","FRA2","FRA3","FRA4","FRA5","FRA6","FRA7","FRA8","FRA9","FRA10","FRA11","FRA12","FRA13","FRA14","FRA15","FRA16","FRA17","FRA18","FRA19","FRA20"]},
+  {"secao":"Seleções","nome":"Senegal","codigo":"SEN","bandeira":"🇸🇳","grad":"linear-gradient(135deg,#00853f,#fdef42,#e31b23)","itens":["SEN1","SEN2","SEN3","SEN4","SEN5","SEN6","SEN7","SEN8","SEN9","SEN10","SEN11","SEN12","SEN13","SEN14","SEN15","SEN16","SEN17","SEN18","SEN19","SEN20"]},
+  {"secao":"Seleções","nome":"Iraq","codigo":"IRQ","bandeira":"🇮🇶","grad":"linear-gradient(135deg,#ce1126,#fff,#000,#007a3d)","itens":["IRQ1","IRQ2","IRQ3","IRQ4","IRQ5","IRQ6","IRQ7","IRQ8","IRQ9","IRQ10","IRQ11","IRQ12","IRQ13","IRQ14","IRQ15","IRQ16","IRQ17","IRQ18","IRQ19","IRQ20"]},
+  {"secao":"Seleções","nome":"Norway","codigo":"NOR","bandeira":"🇳🇴","grad":"linear-gradient(135deg,#ef2b2d,#fff,#002868)","itens":["NOR1","NOR2","NOR3","NOR4","NOR5","NOR6","NOR7","NOR8","NOR9","NOR10","NOR11","NOR12","NOR13","NOR14","NOR15","NOR16","NOR17","NOR18","NOR19","NOR20"]},
+  {"secao":"Seleções","nome":"Argentina","codigo":"ARG","bandeira":"🇦🇷","grad":"linear-gradient(135deg,#74acdf,#fff,#74acdf)","itens":["ARG1","ARG2","ARG3","ARG4","ARG5","ARG6","ARG7","ARG8","ARG9","ARG10","ARG11","ARG12","ARG13","ARG14","ARG15","ARG16","ARG17","ARG18","ARG19","ARG20"]},
+  {"secao":"Seleções","nome":"Algeria","codigo":"ALG","bandeira":"🇩🇿","grad":"linear-gradient(135deg,#006233,#fff,#d21034)","itens":["ALG1","ALG2","ALG3","ALG4","ALG5","ALG6","ALG7","ALG8","ALG9","ALG10","ALG11","ALG12","ALG13","ALG14","ALG15","ALG16","ALG17","ALG18","ALG19","ALG20"]},
+  {"secao":"Seleções","nome":"Austria","codigo":"AUT","bandeira":"🇦🇹","grad":"linear-gradient(135deg,#ed2939,#fff,#ed2939)","itens":["AUT1","AUT2","AUT3","AUT4","AUT5","AUT6","AUT7","AUT8","AUT9","AUT10","AUT11","AUT12","AUT13","AUT14","AUT15","AUT16","AUT17","AUT18","AUT19","AUT20"]},
+  {"secao":"Seleções","nome":"Jordan","codigo":"JOR","bandeira":"🇯🇴","grad":"linear-gradient(135deg,#007a3d,#fff,#000,#ce1126)","itens":["JOR1","JOR2","JOR3","JOR4","JOR5","JOR6","JOR7","JOR8","JOR9","JOR10","JOR11","JOR12","JOR13","JOR14","JOR15","JOR16","JOR17","JOR18","JOR19","JOR20"]},
+  {"secao":"Seleções","nome":"Portugal","codigo":"POR","bandeira":"🇵🇹","grad":"linear-gradient(135deg,#006600,#fff,#ff0000)","itens":["POR1","POR2","POR3","POR4","POR5","POR6","POR7","POR8","POR9","POR10","POR11","POR12","POR13","POR14","POR15","POR16","POR17","POR18","POR19","POR20"]},
+  {"secao":"Seleções","nome":"DR Congo","codigo":"COD","bandeira":"🇨🇩","grad":"linear-gradient(135deg,#007fff,#f7d618,#ce1126)","itens":["COD1","COD2","COD3","COD4","COD5","COD6","COD7","COD8","COD9","COD10","COD11","COD12","COD13","COD14","COD15","COD16","COD17","COD18","COD19","COD20"]},
+  {"secao":"Seleções","nome":"Uzbekistan","codigo":"UZB","bandeira":"🇺🇿","grad":"linear-gradient(135deg,#1eb53a,#fff,#1eb53a,#ce1126)","itens":["UZB1","UZB2","UZB3","UZB4","UZB5","UZB6","UZB7","UZB8","UZB9","UZB10","UZB11","UZB12","UZB13","UZB14","UZB15","UZB16","UZB17","UZB18","UZB19","UZB20"]},
+  {"secao":"Seleções","nome":"Colombia","codigo":"COL","bandeira":"🇨🇴","grad":"linear-gradient(135deg,#fcd116,#003087,#ce1126)","itens":["COL1","COL2","COL3","COL4","COL5","COL6","COL7","COL8","COL9","COL10","COL11","COL12","COL13","COL14","COL15","COL16","COL17","COL18","COL19","COL20"]},
+  {"secao":"Seleções","nome":"England","codigo":"ENG","bandeira":"🏴󠁧󠁢󠁥󠁮󠁧󠁿","grad":"linear-gradient(135deg,#fff,#cf142b)","itens":["ENG1","ENG2","ENG3","ENG4","ENG5","ENG6","ENG7","ENG8","ENG9","ENG10","ENG11","ENG12","ENG13","ENG14","ENG15","ENG16","ENG17","ENG18","ENG19","ENG20"]},
+  {"secao":"Seleções","nome":"Croatia","codigo":"CRO","bandeira":"🇭🇷","grad":"linear-gradient(135deg,#ff0000,#fff,#0000cd)","itens":["CRO1","CRO2","CRO3","CRO4","CRO5","CRO6","CRO7","CRO8","CRO9","CRO10","CRO11","CRO12","CRO13","CRO14","CRO15","CRO16","CRO17","CRO18","CRO19","CRO20"]},
+  {"secao":"Seleções","nome":"Ghana","codigo":"GHA","bandeira":"🇬🇭","grad":"linear-gradient(135deg,#006b3f,#fcd116,#ce1126)","itens":["GHA1","GHA2","GHA3","GHA4","GHA5","GHA6","GHA7","GHA8","GHA9","GHA10","GHA11","GHA12","GHA13","GHA14","GHA15","GHA16","GHA17","GHA18","GHA19","GHA20"]},
+  {"secao":"Seleções","nome":"Panama","codigo":"PAN","bandeira":"🇵🇦","grad":"linear-gradient(135deg,#fff,#da121a,#002B7F)","itens":["PAN1","PAN2","PAN3","PAN4","PAN5","PAN6","PAN7","PAN8","PAN9","PAN10","PAN11","PAN12","PAN13","PAN14","PAN15","PAN16","PAN17","PAN18","PAN19","PAN20"]}
+];
 
-const EMBUTIDO_TENHO = ["ALG12","ALG17","ALG3","ALG5","ALG6","ALG7","ARG10","ARG11","ARG12","ARG13","ARG14","ARG15","ARG16","ARG18","ARG19","ARG2","ARG20","ARG3","ARG4","ARG5","ARG6","ARG7","ARG8","ARG9","AUS1","AUS11","AUS13","AUS2","AUS20","AUS4","AUS8","AUT1","AUT11","AUT14","AUT16","AUT17","AUT20","AUT5","BEL1","BEL10","BEL11","BEL13","BEL14","BEL15","BEL5","BEL7","BEL9","BIH3","BIH7","BIH8","BRA1","BRA10","BRA11","BRA13","BRA14","BRA15","BRA16","BRA19","BRA2","BRA20","BRA3","BRA5","BRA6","BRA7","BRA8","BRA9","CAN10","CAN11","CAN4","CAN5","CAN8","CAN9","CC13","CC5","CIV1","CIV13","CIV16","CIV2","CIV6","CIV9","COD13","COD18","COD5","COL11","COL13","COL14","COL16","COL20","COL6","COL8","CPV10","CPV11","CPV14","CPV16","CPV2","CPV20","CPV3","CPV7","CRO1","CRO10","CRO13","CRO17","CRO18","CRO19","CRO2","CRO4","CUW1","CUW10","CUW11","CUW14","CUW15","CUW16","CUW17","CUW19","CUW5","CUW6","CZE1","CZE3","CZE9","ECU1","ECU12","ECU13","ECU17","ECU18","ECU3","ECU6","ECU8","EGY11","EGY2","EGY3","EGY6","EGY7","ENG1","ENG10","ENG11","ENG12","ENG13","ENG14","ENG15","ENG16","ENG17","ENG18","ENG19","ENG20","ENG3","ENG4","ENG5","ENG6","ENG7","ENG8","ENG9","ESP15","ESP16","ESP19","ESP2","ESP20","ESP6","ESP7","ESP9","FRA1","FRA10","FRA11","FRA12","FRA14","FRA15","FRA16","FRA17","FRA18","FRA19","FRA20","FRA3","FRA4","FRA5","FRA7","FRA8","FRA9","FWC18","FWC5","FWC8","GER1","GER10","GER11","GER12","GER14","GER15","GER16","GER18","GER19","GER2","GER20","GER3","GER4","GER5","GER7","GER8","GER9","GHA11","GHA16","GHA18","GHA4","GHA8","HAI10","HAI11","HAI12","HAI14","HAI15","HAI16","HAI3","HAI9","IRN1","IRN20","IRN5","IRN9","IRQ16","JOR10","JOR11","JOR2","JOR20","JOR3","JOR6","JOR7","JPN14","JPN15","JPN18","JPN4","JPN5","KOR14","KOR15","KOR18","KOR19","KOR2","KOR20","KOR6","KOR7","KOR9","KSA13","KSA14","KSA17","KSA18","KSA3","KSA5","MAR1","MAR11","MAR15","MAR16","MAR19","MAR2","MAR20","MAR7","MEX12","MEX13","MEX14","MEX17","MEX18","MEX3","MEX4","MEX5","MEX6","MEX8","MEX9","NED10","NED12","NED14","NED15","NED16","NED17","NED18","NED19","NED2","NED20","NED3","NED6","NED7","NED8","NOR1","NOR10","NOR11","NOR12","NOR13","NOR14","NOR16","NOR17","NOR18","NOR19","NOR2","NOR20","NOR3","NOR4","NOR5","NOR6","NOR8","NOR9","NZL11","NZL3","NZL7","PAN1","PAN18","PAN5","PAN8","PAR1","PAR10","PAR11","PAR14","PAR16","PAR17","PAR19","PAR20","PAR5","PAR9","POR1","POR11","POR12","POR14","POR16","POR17","POR18","POR19","POR2","POR20","POR4","POR5","POR6","POR8","POR9","QAT1","QAT10","QAT11","QAT12","QAT13","QAT15","QAT16","QAT17","QAT18","QAT19","QAT2","QAT20","QAT3","QAT4","QAT5","QAT7","QAT8","QAT9","RSA1","RSA12","RSA14","RSA17","RSA2","RSA20","RSA3","RSA4","RSA6","RSA8","RSA9","SCO10","SCO11","SCO12","SCO15","SCO16","SCO17","SCO19","SCO2","SCO20","SCO6","SCO7","SCO8","SCO9","SEN1","SEN12","SEN16","SEN19","SEN20","SEN3","SEN5","SEN7","SEN8","SUI1","SUI12","SUI15","SUI16","SUI5","SWE11","SWE20","SWE4","TUN11","TUR14","TUR18","TUR8","URU1","URU11","URU16","URU20","URU3","URU7","USA5","USA9","UZB1","UZB4","UZB9"];
+const EMBUTIDO_TENHO = ["ALG12","ALG17","ALG2","ALG3","ALG5","ALG6","ALG7","ARG1","ARG10","ARG11","ARG12","ARG13","ARG14","ARG15","ARG16","ARG18","ARG19","ARG2","ARG20","ARG3","ARG4","ARG5","ARG6","ARG7","ARG8","ARG9","AUS1","AUS10","AUS11","AUS13","AUS15","AUS19","AUS2","AUS20","AUS4","AUS8","AUT1","AUT11","AUT14","AUT16","AUT17","AUT20","AUT4","AUT5","BEL1","BEL10","BEL11","BEL12","BEL13","BEL14","BEL15","BEL17","BEL2","BEL20","BEL4","BEL5","BEL6","BEL7","BEL8","BEL9","BIH1","BIH12","BIH3","BIH7","BIH8","BRA1","BRA10","BRA11","BRA12","BRA13","BRA14","BRA15","BRA16","BRA17","BRA18","BRA19","BRA2","BRA20","BRA3","BRA5","BRA6","BRA7","BRA8","BRA9","CAN10","CAN11","CAN2","CAN4","CAN5","CAN6","CAN8","CAN9","CC10","CC13","CC2","CC5","CIV1","CIV11","CIV13","CIV16","CIV2","CIV6","CIV9","COD1","COD10","COD13","COD15","COD16","COD18","COD19","COD20","COD5","COL11","COL13","COL14","COL16","COL20","COL6","COL8","CPV10","CPV11","CPV14","CPV16","CPV2","CPV20","CPV3","CPV7","CRO1","CRO10","CRO11","CRO12","CRO13","CRO14","CRO16","CRO17","CRO18","CRO19","CRO2","CRO3","CRO4","CRO5","CRO6","CRO7","CRO8","CRO9","CUW1","CUW10","CUW11","CUW14","CUW15","CUW16","CUW17","CUW19","CUW4","CUW5","CUW6","CZE1","CZE3","CZE5","CZE8","CZE9","ECU1","ECU12","ECU13","ECU15","ECU17","ECU18","ECU3","ECU6","ECU8","EGY11","EGY2","EGY3","EGY6","EGY7","ENG1","ENG10","ENG11","ENG12","ENG13","ENG14","ENG15","ENG16","ENG17","ENG18","ENG19","ENG20","ENG3","ENG4","ENG5","ENG6","ENG7","ENG8","ENG9","ESP10","ESP11","ESP14","ESP15","ESP16","ESP18","ESP19","ESP2","ESP20","ESP3","ESP4","ESP6","ESP7","ESP8","ESP9","FRA1","FRA10","FRA11","FRA12","FRA14","FRA15","FRA16","FRA17","FRA18","FRA19","FRA2","FRA20","FRA3","FRA4","FRA5","FRA6","FRA7","FRA8","FRA9","FWC14","FWC16","FWC17","FWC18","FWC5","FWC8","GER1","GER10","GER11","GER12","GER13","GER14","GER15","GER16","GER18","GER19","GER2","GER20","GER3","GER4","GER5","GER6","GER7","GER8","GER9","GHA11","GHA16","GHA18","GHA4","GHA8","HAI10","HAI11","HAI12","HAI14","HAI15","HAI16","HAI3","HAI9","IRN1","IRN10","IRN15","IRN19","IRN20","IRN5","IRN6","IRN9","IRQ1","IRQ16","JOR10","JOR11","JOR2","JOR20","JOR3","JOR6","JOR7","JPN14","JPN15","JPN18","JPN4","JPN5","KOR14","KOR15","KOR18","KOR19","KOR2","KOR20","KOR6","KOR7","KOR9","KSA13","KSA14","KSA17","KSA18","KSA3","KSA5","MAR1","MAR11","MAR15","MAR16","MAR19","MAR2","MAR20","MAR7","MEX10","MEX11","MEX12","MEX13","MEX14","MEX15","MEX16","MEX17","MEX18","MEX20","MEX3","MEX4","MEX5","MEX6","MEX7","MEX8","MEX9","NED10","NED11","NED12","NED13","NED14","NED15","NED16","NED17","NED18","NED19","NED2","NED20","NED3","NED5","NED6","NED7","NED8","NED9","NOR1","NOR10","NOR11","NOR12","NOR13","NOR14","NOR16","NOR17","NOR18","NOR19","NOR2","NOR20","NOR3","NOR4","NOR5","NOR6","NOR8","NOR9","NZL11","NZL3","NZL7","PAN1","PAN18","PAN5","PAN8","PAR1","PAR10","PAR11","PAR14","PAR16","PAR17","PAR19","PAR20","PAR5","PAR9","POR1","POR11","POR12","POR13","POR14","POR16","POR17","POR18","POR19","POR2","POR20","POR4","POR5","POR6","POR8","POR9","QAT1","QAT10","QAT11","QAT12","QAT13","QAT15","QAT16","QAT17","QAT18","QAT19","QAT2","QAT20","QAT3","QAT4","QAT5","QAT6","QAT7","QAT8","QAT9","RSA1","RSA10","RSA12","RSA13","RSA14","RSA15","RSA17","RSA18","RSA19","RSA2","RSA20","RSA3","RSA4","RSA5","RSA6","RSA7","RSA8","RSA9","SCO1","SCO10","SCO11","SCO12","SCO15","SCO16","SCO17","SCO18","SCO19","SCO2","SCO20","SCO3","SCO5","SCO6","SCO7","SCO8","SCO9","SEN1","SEN12","SEN16","SEN19","SEN20","SEN3","SEN5","SEN7","SEN8","SUI1","SUI12","SUI15","SUI16","SUI5","SWE11","SWE20","SWE4","TUN11","TUN19","TUN4","TUN8","TUN9","TUR10","TUR14","TUR15","TUR18","TUR19","TUR8","URU1","URU11","URU16","URU20","URU3","URU4","URU7","URU8","USA10","USA11","USA2","USA3","USA5","USA6","USA7","USA9","UZB1","UZB4","UZB9"];
 
-/* ── ESTADO ── */
+/* ══ ESTADO ══ */
 const CHAVE = "controle_figurinhas_copa2026_pessoal_corrigido_v1";
-let estado = JSON.parse(localStorage.getItem(CHAVE) || "null") || estadoInicial();
+let estado = JSON.parse(localStorage.getItem(CHAVE)||"null") || estadoInicial();
 
-function estadoInicial() {
-  const e = {};
-  ALBUM.forEach(g => g.itens.forEach(item => e[item] = EMBUTIDO_TENHO.includes(item)));
+function estadoInicial(){
+  const e={};
+  ALBUM.forEach(g=>g.itens.forEach(item=>e[item]=EMBUTIDO_TENHO.includes(item)));
   return e;
 }
-function salvar() { localStorage.setItem(CHAVE, JSON.stringify(estado)); }
-function tenho(item) { return estado[item] === true; }
-function obtidos(g) { return g.itens.filter(i => tenho(i)); }
-function faltantes(g) { return g.itens.filter(i => !tenho(i)); }
+function salvar(){localStorage.setItem(CHAVE,JSON.stringify(estado))}
+function tenho(item){return estado[item]===true}
+function obtidos(g){return g.itens.filter(i=>tenho(i))}
+function faltantes(g){return g.itens.filter(i=>!tenho(i))}
 
-function alternar(item) {
-  estado[item] = !estado[item];
+function alternar(item){
+  estado[item]=!estado[item];
   salvar();
+  if(tenho(item)) disparaConfete();
   desenhar();
-  mostrarToast(tenho(item) ? `✅ ${item} marcada como TENHO!` : `❌ ${item} marcada como FALTA`);
+  mostrarToast(tenho(item)?`✅ ${item} — TENHO!`:`❌ ${item} — falta`, tenho(item)?'ok':'err');
 }
 
-function marcarGrupo(idx, valor) {
-  ALBUM[idx].itens.forEach(i => estado[i] = valor);
+function marcarGrupo(idx,valor){
+  const era = obtidos(ALBUM[idx]).length;
+  ALBUM[idx].itens.forEach(i=>estado[i]=valor);
   salvar(); desenhar(); montarOpcoesLista();
-  mostrarToast(valor ? `✅ Todas de ${ALBUM[idx].nome} marcadas!` : `❌ Todas de ${ALBUM[idx].nome} desmarcadas`);
+  if(valor && era<ALBUM[idx].itens.length) disparaConfete(30);
+  mostrarToast(valor?`🎉 Todas de ${ALBUM[idx].nome} marcadas!`:`❌ ${ALBUM[idx].nome} desmarcado`,'ok');
 }
 
-function resetar() {
-  if (confirm("Restaurar para a lista inicial embutida nesta versão?\n\nIsso apagará o progresso atual.")) {
-    estado = estadoInicial(); salvar(); desenhar(); montarOpcoesLista();
-    mostrarToast("↺ Progresso restaurado para o estado inicial.");
+function resetar(){
+  if(confirm("Restaurar para a lista inicial embutida?\n\nIsso apagará o progresso atual.")){
+    estado=estadoInicial();salvar();desenhar();montarOpcoesLista();
+    mostrarToast("↺ Progresso restaurado",'ok');
   }
 }
 
-/* ── RENDER ── */
-function desenhar() {
-  const app = document.getElementById("app");
-  const busca = document.getElementById("busca").value.toLowerCase().trim();
-  const filtro = document.getElementById("filtro").value;
-  let html = "", total = 0, tenhoT = 0, secaoAtual = "";
+/* ══ CONFETE ══ */
+const CORES_CONF=['#ff6b35','#ffdd00','#4eff91','#00d4ff','#ff3cac','#fff'];
+function disparaConfete(n=15){
+  const c=document.getElementById('confete');
+  for(let i=0;i<n;i++){
+    const d=document.createElement('div');
+    d.className='c-piece';
+    d.style.left=Math.random()*100+'vw';
+    d.style.background=CORES_CONF[Math.floor(Math.random()*CORES_CONF.length)];
+    d.style.width=(6+Math.random()*6)+'px';
+    d.style.height=(6+Math.random()*6)+'px';
+    d.style.animationDuration=(0.8+Math.random()*0.8)+'s';
+    d.style.animationDelay=(Math.random()*0.4)+'s';
+    c.appendChild(d);
+    d.addEventListener('animationend',()=>d.remove());
+  }
+}
 
-  ALBUM.forEach(g => { total += g.itens.length; tenhoT += obtidos(g).length; });
-  const faltaT = total - tenhoT;
-  const pct = total ? Math.round((tenhoT / total) * 100) : 0;
+/* ══ RENDER ══ */
+function desenhar(){
+  const app=document.getElementById('app');
+  const busca=document.getElementById('busca').value.toLowerCase().trim();
+  const filtro=document.getElementById('filtro').value;
+  let html='', total=0, tenhoT=0, secaoAtual='';
 
-  document.getElementById("tenhoTotal").textContent = tenhoT;
-  document.getElementById("faltaTotal").textContent = faltaT;
-  document.getElementById("totalGeral").textContent = total;
-  document.getElementById("percentual").textContent = pct + "%";
-  document.getElementById("progBar").style.width = pct + "%";
-  document.getElementById("progLabel").textContent = `${tenhoT} de ${total} figurinhas`;
+  ALBUM.forEach(g=>{total+=g.itens.length;tenhoT+=obtidos(g).length;});
+  const faltaT=total-tenhoT;
+  const pct=total?Math.round((tenhoT/total)*100):0;
 
-  ALBUM.forEach((g, idx) => {
-    const t = obtidos(g), f = faltantes(g);
-    const texto = (g.secao + " " + g.nome + " " + g.codigo + " " + g.itens.join(" ")).toLowerCase();
-    if (busca && !texto.includes(busca)) return;
-    if (filtro === "faltando" && f.length === 0) return;
-    if (filtro === "completas" && f.length > 0) return;
+  document.getElementById('tenhoTotal').textContent=tenhoT;
+  document.getElementById('faltaTotal').textContent=faltaT;
+  document.getElementById('totalGeral').textContent=total;
+  document.getElementById('percentual').textContent=pct+'%';
+  document.getElementById('progBar').style.width=pct+'%';
 
-    if (g.secao !== secaoAtual) {
-      secaoAtual = g.secao;
-      html += `<div class="secao-heading"><span>${secaoAtual.toUpperCase()}</span><div class="secao-linha"></div></div>`;
+  let gruposVisiveis=[];
+  ALBUM.forEach((g,idx)=>{
+    const t=obtidos(g), f=faltantes(g);
+    const texto=(g.secao+' '+g.nome+' '+g.codigo+' '+g.itens.join(' ')).toLowerCase();
+    if(busca && !texto.includes(busca)) return;
+    if(filtro==='faltando' && f.length===0) return;
+    if(filtro==='completas' && f.length>0) return;
+    gruposVisiveis.push({g,idx,t,f});
+  });
+
+  if(!gruposVisiveis.length){
+    app.innerHTML='<div class="sem-resultado">🔍 Nenhum resultado encontrado.</div>';
+    return;
+  }
+
+  gruposVisiveis.forEach(({g,idx,t,f},vi)=>{
+    if(g.secao!==secaoAtual){
+      secaoAtual=g.secao;
+      html+=`<div class="secao-heading">
+        <div class="secao-linha"></div>
+        <div class="secao-heading-text">${secaoAtual}</div>
+        <div class="secao-linha"></div>
+      </div><div class="paises-grid" id="grid_${secaoAtual.replace(/\s/g,'_')}">`;
     }
 
-    const pctG = g.itens.length ? Math.round((t.length / g.itens.length) * 100) : 0;
-    const pillFalta = f.length === 0
-      ? `<span class="pill pill-completo">🏅 COMPLETO</span>`
-      : `<span class="pill pill-falta">❌ ${f.length} faltam</span>`;
-    const pillTenho = `<span class="pill pill-tenho">✅ ${t.length}</span>`;
+    const pctG=g.itens.length?Math.round((t.length/g.itens.length)*100):0;
+    const completo=f.length===0;
 
-    const figsHtml = g.itens.map(item =>
-      `<button class="fig ${tenho(item) ? 'tenho' : 'falta'}" onclick="alternar('${item}')" title="${tenho(item) ? 'Tenho — clique para desmarcar' : 'Falta — clique para marcar'}">${item}</button>`
-    ).join("");
+    const figsHtml=g.itens.map(item=>`<button
+      class="fig ${tenho(item)?'tenho':'falta'}"
+      onclick="alternar('${item}')"
+      title="${tenho(item)?'Tenho':'Falta'}: ${item}"
+    >${item.replace(g.codigo,'')}</button>`).join('');
 
-    const faltantesTexto = f.length
-      ? `<strong>${f.length} faltam:</strong> <span class="faltantes-codigos">${f.join(", ")}</span>`
-      : `<strong style="color:var(--verde2)">🏅 Seleção completa!</strong>`;
+    const contagem=completo
+      ? `<div class="ct-completo">🏅 100%</div>`
+      : `<div class="ct-tenho">✅ ${t.length}</div><div class="ct-falta">❌ ${f.length}</div>`;
 
-    html += `
-<details>
-  <summary class="card-summary">
-    <div style="display:flex;align-items:center;flex:1;gap:4px;min-width:0">
-      <span class="card-nome">${g.nome}</span>
-      <span class="card-codigo">${g.codigo}</span>
+    // cor da barra de progresso baseada no gradiente do card
+    const barGrad=completo?'linear-gradient(90deg,#4eff91,#ffdd00)':g.grad;
+
+    html+=`
+<div class="pais-card" style="--grad:${g.grad};--grad-header:${g.grad.replace('linear-gradient','linear-gradient').replace(')',',0.18)')}">
+  ${completo?'<div class="badge-completo">🏅 COMPLETO</div>':''}
+  <div class="pais-header">
+    <div class="pais-flag">${g.bandeira}</div>
+    <div class="pais-info">
+      <div class="pais-nome">${g.nome}</div>
+      <div class="pais-codigo">${g.codigo}</div>
     </div>
-    <div class="card-stats">
-      ${pillTenho}
-      ${pillFalta}
-      <div class="mini-prog"><div class="mini-prog-fill" style="width:${pctG}%"></div></div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-  </summary>
-  <div class="card-body">
-    <div class="faltantes-linha">${faltantesTexto}</div>
-    <div class="figs">${figsHtml}</div>
-    <div class="card-acoes">
-      <button class="btn-sm marcar-tenho" onclick="marcarGrupo(${idx}, true)">✅ Marcar tudo como TENHO</button>
-      <button class="btn-sm marcar-falta" onclick="marcarGrupo(${idx}, false)">❌ Marcar tudo como FALTA</button>
+    <div class="pais-contagem">${contagem}</div>
+  </div>
+  <div class="pais-progbar">
+    <div class="pais-progbar-fill" style="width:${pctG}%;background:${barGrad}"></div>
+  </div>
+  <div class="pais-body">
+    <div class="figs-wrap">${figsHtml}</div>
+    <div class="pais-acoes">
+      <button class="btn-card marcar-tenho" onclick="marcarGrupo(${idx},true)">✅ Marcar tudo</button>
+      <button class="btn-card marcar-falta" onclick="marcarGrupo(${idx},false)">❌ Desmarcar tudo</button>
     </div>
   </div>
-</details>`;
+</div>`;
+
+    // fecha a grid se for o último item da seção ou o último item geral
+    const proxIdx=vi+1;
+    const proxG=gruposVisiveis[proxIdx];
+    if(!proxG || proxG.g.secao!==g.secao) html+='</div>';
   });
 
-  app.innerHTML = html || `<div class="sem-resultado">🔍 Nenhum resultado encontrado para essa busca.</div>`;
+  app.innerHTML=html;
+
+  // animação escalonada nos cards
+  document.querySelectorAll('.pais-card').forEach((c,i)=>{
+    c.style.animationDelay=(i*0.03)+'s';
+  });
 }
 
-/* ── PAINEL LISTA FILTRADA ── */
-function abrirPainelLista() {
-  const painel = document.getElementById("painelLista");
-  const visivel = painel.style.display !== "none";
-  painel.style.display = visivel ? "none" : "block";
-  if (!visivel) { montarOpcoesLista(); painel.scrollIntoView({ behavior: "smooth", block: "start" }); }
+/* ══ PAINEL LISTA ══ */
+function abrirPainelLista(){
+  const p=document.getElementById('painelLista');
+  const v=p.style.display!=='none';
+  p.style.display=v?'none':'block';
+  if(!v){montarOpcoesLista();p.scrollIntoView({behavior:'smooth',block:'start'});}
 }
 
-function montarOpcoesLista() {
-  const div = document.getElementById("opcoesLista");
-  div.innerHTML = ALBUM.map((g, idx) => {
-    const f = faltantes(g);
-    const badgeCls = f.length === 0 ? "ok" : "";
-    const badgeText = f.length === 0 ? "✓ completo" : `${f.length} faltam`;
+function montarOpcoesLista(){
+  const div=document.getElementById('opcoesLista');
+  div.innerHTML=ALBUM.map((g,idx)=>{
+    const f=faltantes(g);
+    const ok=f.length===0;
     return `<label class="checkitem">
       <input type="checkbox" class="chkLista" value="${idx}">
-      <span class="ci-nome">${g.nome} <small style="color:var(--cinza)">(${g.codigo})</small></span>
-      <span class="ci-badge ${badgeCls}">${badgeText}</span>
+      <span class="ci-flag">${g.bandeira}</span>
+      <span class="ci-nome">${g.nome}</span>
+      <span class="ci-badge ${ok?'ok':''}">${ok?'✓ completo':f.length+' faltam'}</span>
     </label>`;
-  }).join("");
+  }).join('');
 }
 
-function marcarTodosLista(valor) { document.querySelectorAll(".chkLista").forEach(c => c.checked = valor); }
-function selecionarSoComFaltantes() { document.querySelectorAll(".chkLista").forEach(c => c.checked = faltantes(ALBUM[Number(c.value)]).length > 0); }
+function marcarTodosLista(v){document.querySelectorAll('.chkLista').forEach(c=>c.checked=v)}
+function selecionarSoComFaltantes(){document.querySelectorAll('.chkLista').forEach(c=>c.checked=faltantes(ALBUM[Number(c.value)]).length>0)}
 
-function gerarListaSelecionada() {
-  const marcados = [...document.querySelectorAll(".chkLista:checked")].map(c => Number(c.value));
-  if (!marcados.length) { mostrarToast("⚠️ Escolha pelo menos uma seleção."); return; }
-  let saida = [], secao = "";
-  marcados.forEach(idx => {
-    const g = ALBUM[idx], f = faltantes(g);
-    if (!f.length) return;
-    if (g.secao !== secao) { secao = g.secao; saida.push("\n# " + secao); }
-    saida.push(`${g.nome} (${g.codigo}): ${f.join(", ")}`);
+function gerarListaSelecionada(){
+  const marcados=[...document.querySelectorAll('.chkLista:checked')].map(c=>Number(c.value));
+  if(!marcados.length){mostrarToast('⚠️ Selecione pelo menos uma seleção','err');return;}
+  let saida=[],secao='';
+  marcados.forEach(idx=>{
+    const g=ALBUM[idx],f=faltantes(g);
+    if(!f.length) return;
+    if(g.secao!==secao){secao=g.secao;saida.push('\n# '+secao);}
+    saida.push(`${g.bandeira} ${g.nome} (${g.codigo}): ${f.join(', ')}`);
   });
-  mostrarTexto(saida.join("\n").trim() || "✅ As seleções escolhidas estão completas!");
+  mostrarTexto(saida.join('\n').trim()||'✅ As seleções escolhidas estão completas!');
 }
 
-function gerarLista() {
-  let saida = [], secao = "";
-  ALBUM.forEach(g => {
-    const f = faltantes(g);
-    if (!f.length) return;
-    if (g.secao !== secao) { secao = g.secao; saida.push("\n# " + secao); }
-    saida.push(`${g.nome} (${g.codigo}): ${f.join(", ")}`);
+function gerarLista(){
+  let saida=[],secao='';
+  ALBUM.forEach(g=>{
+    const f=faltantes(g);
+    if(!f.length) return;
+    if(g.secao!==secao){secao=g.secao;saida.push('\n# '+secao);}
+    saida.push(`${g.bandeira} ${g.nome} (${g.codigo}): ${f.join(', ')}`);
   });
-  const painel = document.getElementById("painelLista");
-  painel.style.display = "block";
-  mostrarTexto(saida.join("\n").trim() || "✅ Álbum completo! Parabéns!");
-  painel.scrollIntoView({ behavior: "smooth" });
+  const painel=document.getElementById('painelLista');
+  painel.style.display='block';
+  mostrarTexto(saida.join('\n').trim()||'✅ Álbum completo! Parabéns!');
+  painel.scrollIntoView({behavior:'smooth'});
 }
 
-/* ── EXPORT / IMPORT / BAIXAR ── */
-function exportar() {
-  const tenhoAtual = Object.keys(estado).filter(k => estado[k]).sort();
-  mostrarTexto(tenhoAtual.join(","));
-  const painel = document.getElementById("painelLista");
-  painel.style.display = "block";
-  painel.scrollIntoView({ behavior: "smooth" });
-  mostrarToast("💾 Copie o texto e envie para a família!");
+function exportar(){
+  const tenhoAtual=Object.keys(estado).filter(k=>estado[k]).sort();
+  mostrarTexto(tenhoAtual.join(','));
+  const painel=document.getElementById('painelLista');
+  painel.style.display='block';
+  painel.scrollIntoView({behavior:'smooth'});
+  mostrarToast('💾 Copie e envie para a família!','ok');
 }
 
-function importar() {
-  const txt = prompt("Cole aqui o progresso exportado (lista de figurinhas separadas por vírgula):");
-  if (!txt) return;
-  const lista = txt.split(",").map(x => x.trim()).filter(Boolean);
-  ALBUM.forEach(g => g.itens.forEach(item => estado[item] = lista.includes(item)));
-  salvar(); desenhar(); montarOpcoesLista();
-  mostrarToast("📥 Progresso importado com sucesso!");
+function importar(){
+  const txt=prompt('Cole aqui o progresso exportado (figurinhas separadas por vírgula):');
+  if(!txt) return;
+  const lista=txt.split(',').map(x=>x.trim()).filter(Boolean);
+  ALBUM.forEach(g=>g.itens.forEach(item=>estado[item]=lista.includes(item)));
+  salvar();desenhar();montarOpcoesLista();
+  mostrarToast('📥 Progresso importado!','ok');
 }
 
-function baixarCopia() {
-  const atual = Object.keys(estado).filter(k => estado[k]).sort();
-  let html = document.documentElement.outerHTML;
-  html = html.replace(
-    /const EMBUTIDO_TENHO = \[[\s\S]*?\];/,
-    "const EMBUTIDO_TENHO = " + JSON.stringify(atual) + ";"
-  );
-  const blob = new Blob(["<!DOCTYPE html>\n" + html], { type: "text/html" });
-  const a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = "controle_figurinhas_copa2026_atualizado.html";
+function baixarCopia(){
+  const atual=Object.keys(estado).filter(k=>estado[k]).sort();
+  let html=document.documentElement.outerHTML;
+  html=html.replace(/const EMBUTIDO_TENHO = \[[\s\S]*?\];/,
+    'const EMBUTIDO_TENHO = '+JSON.stringify(atual)+';');
+  const blob=new Blob(['<!DOCTYPE html>\n'+html],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='figurinhas_copa2026_atualizado.html';
   a.click();
-  mostrarToast("⬇️ Arquivo salvo! Compartilhe com a família.");
+  mostrarToast('⬇️ Arquivo salvo!','ok');
 }
 
-/* ── UTILITÁRIOS ── */
-function mostrarTexto(txt) {
-  const caixa = document.getElementById("caixaLista");
-  caixa.style.display = "block";
-  document.getElementById("listaTexto").value = txt;
-  document.getElementById("listaTexto").select();
-  caixa.scrollIntoView({ behavior: "smooth", block: "start" });
+function mostrarTexto(txt){
+  const caixa=document.getElementById('caixaLista');
+  caixa.style.display='block';
+  document.getElementById('listaTexto').value=txt;
+  document.getElementById('listaTexto').select();
+  caixa.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
 let toastTimer;
-function mostrarToast(msg) {
-  const el = document.getElementById("toast");
-  el.textContent = msg;
-  el.classList.add("show");
+function mostrarToast(msg,tipo='ok'){
+  const el=document.getElementById('toast');
+  el.textContent=msg;
+  el.className='toast toast-'+tipo+' show';
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove("show"), 2800);
+  toastTimer=setTimeout(()=>{el.classList.remove('show')},2800);
 }
 
-/* ── INIT ── */
-document.getElementById("busca").addEventListener("input", desenhar);
-document.getElementById("filtro").addEventListener("change", desenhar);
+/* ══ INIT ══ */
+document.getElementById('busca').addEventListener('input',desenhar);
+document.getElementById('filtro').addEventListener('change',desenhar);
 desenhar();
 montarOpcoesLista();
 </script>
 </body>
-  </html>
+</html>
