@@ -107,6 +107,7 @@ header{
 .hstat:nth-child(2) .hstat-val{color:#ff6b6b}
 .hstat:nth-child(3) .hstat-val{color:#ffdd00}
 .hstat:nth-child(4) .hstat-val{color:#00d4ff}
+.hstat:nth-child(5) .hstat-val{color:#ff6b35}
 
 /* Barra de progresso global */
 .prog-global{
@@ -454,6 +455,7 @@ main{
         <div class="hstat"><span class="hstat-val" id="faltaTotal">0</span><span class="hstat-lbl">Faltam</span></div>
         <div class="hstat"><span class="hstat-val" id="totalGeral">0</span><span class="hstat-lbl">Total</span></div>
         <div class="hstat"><span class="hstat-val" id="percentual">0%</span><span class="hstat-lbl">Progresso</span></div>
+        <div class="hstat"><span class="hstat-val" id="completasTotal">0</span><span class="hstat-lbl">Completas</span></div>
       </div>
     </div>
     <div class="prog-global">
@@ -564,10 +566,10 @@ const ALBUM = [
   {"secao":"Seleções","nome":"Panama","codigo":"PAN","bandeira":"🇵🇦","grad":"linear-gradient(135deg,#fff,#da121a,#002B7F)","itens":["PAN1","PAN2","PAN3","PAN4","PAN5","PAN6","PAN7","PAN8","PAN9","PAN10","PAN11","PAN12","PAN13","PAN14","PAN15","PAN16","PAN17","PAN18","PAN19","PAN20"]}
 ];
 
-const EMBUTIDO_TENHO = ["ALG12","ALG17","ALG2","ALG3","ALG5","ALG6","ALG7","ARG1","ARG10","ARG11","ARG12","ARG13","ARG14","ARG15","ARG16","ARG18","ARG19","ARG2","ARG20","ARG3","ARG4","ARG5","ARG6","ARG7","ARG8","ARG9","AUS1","AUS10","AUS11","AUS13","AUS15","AUS19","AUS2","AUS20","AUS4","AUS8","AUT1","AUT11","AUT14","AUT16","AUT17","AUT20","AUT4","AUT5","BEL1","BEL10","BEL11","BEL12","BEL13","BEL14","BEL15","BEL17","BEL2","BEL20","BEL4","BEL5","BEL6","BEL7","BEL8","BEL9","BIH1","BIH12","BIH3","BIH7","BIH8","BRA1","BRA10","BRA11","BRA12","BRA13","BRA14","BRA15","BRA16","BRA17","BRA18","BRA19","BRA2","BRA20","BRA3","BRA5","BRA6","BRA7","BRA8","BRA9","CAN10","CAN11","CAN2","CAN4","CAN5","CAN6","CAN8","CAN9","CC10","CC13","CC2","CC5","CIV1","CIV11","CIV13","CIV16","CIV2","CIV6","CIV9","COD1","COD10","COD13","COD15","COD16","COD18","COD19","COD20","COD5","COL11","COL13","COL14","COL16","COL20","COL6","COL8","CPV10","CPV11","CPV14","CPV16","CPV2","CPV20","CPV3","CPV7","CRO1","CRO10","CRO11","CRO12","CRO13","CRO14","CRO16","CRO17","CRO18","CRO19","CRO2","CRO3","CRO4","CRO5","CRO6","CRO7","CRO8","CRO9","CUW1","CUW10","CUW11","CUW14","CUW15","CUW16","CUW17","CUW19","CUW4","CUW5","CUW6","CZE1","CZE3","CZE5","CZE8","CZE9","ECU1","ECU12","ECU13","ECU15","ECU17","ECU18","ECU3","ECU6","ECU8","EGY11","EGY2","EGY3","EGY6","EGY7","ENG1","ENG10","ENG11","ENG12","ENG13","ENG14","ENG15","ENG16","ENG17","ENG18","ENG19","ENG20","ENG3","ENG4","ENG5","ENG6","ENG7","ENG8","ENG9","ESP10","ESP11","ESP14","ESP15","ESP16","ESP18","ESP19","ESP2","ESP20","ESP3","ESP4","ESP6","ESP7","ESP8","ESP9","FRA1","FRA10","FRA11","FRA12","FRA14","FRA15","FRA16","FRA17","FRA18","FRA19","FRA2","FRA20","FRA3","FRA4","FRA5","FRA6","FRA7","FRA8","FRA9","FWC14","FWC16","FWC17","FWC18","FWC5","FWC8","GER1","GER10","GER11","GER12","GER13","GER14","GER15","GER16","GER18","GER19","GER2","GER20","GER3","GER4","GER5","GER6","GER7","GER8","GER9","GHA11","GHA16","GHA18","GHA4","GHA8","HAI10","HAI11","HAI12","HAI14","HAI15","HAI16","HAI3","HAI9","IRN1","IRN10","IRN15","IRN19","IRN20","IRN5","IRN6","IRN9","IRQ1","IRQ16","JOR10","JOR11","JOR2","JOR20","JOR3","JOR6","JOR7","JPN14","JPN15","JPN18","JPN4","JPN5","KOR14","KOR15","KOR18","KOR19","KOR2","KOR20","KOR6","KOR7","KOR9","KSA13","KSA14","KSA17","KSA18","KSA3","KSA5","MAR1","MAR11","MAR15","MAR16","MAR19","MAR2","MAR20","MAR7","MEX10","MEX11","MEX12","MEX13","MEX14","MEX15","MEX16","MEX17","MEX18","MEX20","MEX3","MEX4","MEX5","MEX6","MEX7","MEX8","MEX9","NED10","NED11","NED12","NED13","NED14","NED15","NED16","NED17","NED18","NED19","NED2","NED20","NED3","NED5","NED6","NED7","NED8","NED9","NOR1","NOR10","NOR11","NOR12","NOR13","NOR14","NOR16","NOR17","NOR18","NOR19","NOR2","NOR20","NOR3","NOR4","NOR5","NOR6","NOR8","NOR9","NZL11","NZL3","NZL7","PAN1","PAN18","PAN5","PAN8","PAR1","PAR10","PAR11","PAR14","PAR16","PAR17","PAR19","PAR20","PAR5","PAR9","POR1","POR11","POR12","POR13","POR14","POR16","POR17","POR18","POR19","POR2","POR20","POR4","POR5","POR6","POR8","POR9","QAT1","QAT10","QAT11","QAT12","QAT13","QAT15","QAT16","QAT17","QAT18","QAT19","QAT2","QAT20","QAT3","QAT4","QAT5","QAT6","QAT7","QAT8","QAT9","RSA1","RSA10","RSA12","RSA13","RSA14","RSA15","RSA17","RSA18","RSA19","RSA2","RSA20","RSA3","RSA4","RSA5","RSA6","RSA7","RSA8","RSA9","SCO1","SCO10","SCO11","SCO12","SCO15","SCO16","SCO17","SCO18","SCO19","SCO2","SCO20","SCO3","SCO5","SCO6","SCO7","SCO8","SCO9","SEN1","SEN12","SEN16","SEN19","SEN20","SEN3","SEN5","SEN7","SEN8","SUI1","SUI12","SUI15","SUI16","SUI5","SWE11","SWE20","SWE4","TUN11","TUN19","TUN4","TUN8","TUN9","TUR10","TUR14","TUR15","TUR18","TUR19","TUR8","URU1","URU11","URU16","URU20","URU3","URU4","URU7","URU8","USA10","USA11","USA2","USA3","USA5","USA6","USA7","USA9","UZB1","UZB4","UZB9"];
+const EMBUTIDO_TENHO = ["A00","ALG12","ALG13","ALG14","ALG16","ALG17","ALG2","ALG3","ALG5","ALG6","ALG7","ARG1","ARG10","ARG11","ARG12","ARG13","ARG14","ARG15","ARG16","ARG17","ARG18","ARG19","ARG2","ARG20","ARG3","ARG4","ARG5","ARG6","ARG7","ARG8","ARG9","AUS1","AUS10","AUS11","AUS13","AUS15","AUS19","AUS2","AUS20","AUS4","AUS8","AUT1","AUT11","AUT14","AUT16","AUT17","AUT19","AUT20","AUT4","AUT5","AUT9","BEL1","BEL10","BEL11","BEL12","BEL13","BEL14","BEL15","BEL16","BEL17","BEL18","BEL19","BEL2","BEL20","BEL4","BEL5","BEL6","BEL7","BEL8","BEL9","BIH1","BIH11","BIH12","BIH15","BIH16","BIH3","BIH7","BIH8","BRA1","BRA10","BRA11","BRA12","BRA13","BRA14","BRA15","BRA16","BRA17","BRA18","BRA19","BRA2","BRA20","BRA3","BRA4","BRA5","BRA6","BRA7","BRA8","BRA9","CAN10","CAN11","CAN2","CAN4","CAN5","CAN6","CAN8","CAN9","CC10","CC13","CC2","CC5","CIV1","CIV11","CIV13","CIV16","CIV2","CIV6","CIV9","COD1","COD10","COD12","COD13","COD14","COD15","COD16","COD18","COD19","COD20","COD5","COL11","COL13","COL14","COL16","COL20","COL3","COL5","COL6","COL7","COL8","COL9","CPV10","CPV11","CPV13","CPV14","CPV16","CPV2","CPV20","CPV3","CPV6","CPV7","CPV9","CRO1","CRO10","CRO11","CRO12","CRO13","CRO14","CRO16","CRO17","CRO18","CRO19","CRO2","CRO3","CRO4","CRO5","CRO6","CRO7","CRO8","CRO9","CUW1","CUW10","CUW11","CUW12","CUW14","CUW15","CUW16","CUW17","CUW19","CUW20","CUW4","CUW5","CUW6","CZE1","CZE10","CZE15","CZE16","CZE19","CZE3","CZE5","CZE6","CZE7","CZE8","CZE9","ECU1","ECU11","ECU12","ECU13","ECU14","ECU15","ECU16","ECU17","ECU18","ECU19","ECU3","ECU4","ECU6","ECU7","ECU8","ECU9","EGY11","EGY15","EGY2","EGY3","EGY4","EGY6","EGY7","ENG1","ENG10","ENG11","ENG12","ENG13","ENG14","ENG15","ENG16","ENG17","ENG18","ENG19","ENG20","ENG3","ENG4","ENG5","ENG6","ENG7","ENG8","ENG9","ESP10","ESP11","ESP12","ESP13","ESP14","ESP15","ESP16","ESP18","ESP19","ESP2","ESP20","ESP3","ESP4","ESP6","ESP7","ESP8","ESP9","FRA1","FRA10","FRA11","FRA12","FRA14","FRA15","FRA16","FRA17","FRA18","FRA19","FRA2","FRA20","FRA3","FRA4","FRA5","FRA6","FRA7","FRA8","FRA9","FWC10","FWC14","FWC16","FWC17","FWC18","FWC19","FWC2","FWC5","FWC6","FWC8","GER1","GER10","GER11","GER12","GER13","GER14","GER15","GER16","GER17","GER18","GER19","GER2","GER20","GER3","GER4","GER5","GER6","GER7","GER8","GER9","GHA1","GHA11","GHA15","GHA16","GHA18","GHA20","GHA3","GHA4","GHA8","HAI1","HAI10","HAI11","HAI12","HAI14","HAI15","HAI16","HAI20","HAI3","HAI5","HAI9","IRN1","IRN10","IRN11","IRN13","IRN15","IRN19","IRN20","IRN5","IRN6","IRN9","IRQ1","IRQ12","IRQ16","IRQ17","IRQ18","IRQ2","IRQ8","JOR1","JOR10","JOR11","JOR2","JOR20","JOR3","JOR6","JOR7","JOR9","JPN11","JPN14","JPN15","JPN18","JPN20","JPN4","JPN5","KOR13","KOR14","KOR15","KOR18","KOR19","KOR2","KOR20","KOR6","KOR7","KOR9","KSA10","KSA13","KSA14","KSA17","KSA18","KSA3","KSA5","MAR1","MAR10","MAR11","MAR14","MAR15","MAR16","MAR17","MAR19","MAR2","MAR20","MAR7","MEX1","MEX10","MEX11","MEX12","MEX13","MEX14","MEX15","MEX16","MEX17","MEX18","MEX19","MEX2","MEX20","MEX3","MEX4","MEX5","MEX6","MEX7","MEX8","MEX9","NED1","NED10","NED11","NED12","NED13","NED14","NED15","NED16","NED17","NED18","NED19","NED2","NED20","NED3","NED4","NED5","NED6","NED7","NED8","NED9","NOR1","NOR10","NOR11","NOR12","NOR13","NOR14","NOR16","NOR17","NOR18","NOR19","NOR2","NOR20","NOR3","NOR4","NOR5","NOR6","NOR8","NOR9","NZL1","NZL10","NZL11","NZL13","NZL15","NZL18","NZL19","NZL3","NZL7","PAN1","PAN12","PAN18","PAN5","PAN8","PAR1","PAR10","PAR11","PAR14","PAR16","PAR17","PAR19","PAR20","PAR5","PAR9","POR1","POR10","POR11","POR12","POR13","POR14","POR15","POR16","POR17","POR18","POR19","POR2","POR20","POR3","POR4","POR5","POR6","POR7","POR8","POR9","QAT1","QAT10","QAT11","QAT12","QAT13","QAT14","QAT15","QAT16","QAT17","QAT18","QAT19","QAT2","QAT20","QAT3","QAT4","QAT5","QAT6","QAT7","QAT8","QAT9","RSA1","RSA10","RSA11","RSA12","RSA13","RSA14","RSA15","RSA16","RSA17","RSA18","RSA19","RSA2","RSA20","RSA3","RSA4","RSA5","RSA6","RSA7","RSA8","RSA9","SCO1","SCO10","SCO11","SCO12","SCO15","SCO16","SCO17","SCO18","SCO19","SCO2","SCO20","SCO3","SCO4","SCO5","SCO6","SCO7","SCO8","SCO9","SEN1","SEN12","SEN16","SEN17","SEN18","SEN19","SEN20","SEN3","SEN4","SEN5","SEN6","SEN7","SEN8","SEN9","SUI1","SUI10","SUI12","SUI13","SUI15","SUI16","SUI19","SUI3","SUI5","SUI7","SWE10","SWE11","SWE15","SWE17","SWE18","SWE2","SWE20","SWE3","SWE4","SWE6","SWE7","TUN11","TUN12","TUN13","TUN17","TUN18","TUN19","TUN4","TUN8","TUN9","TUR10","TUR11","TUR14","TUR15","TUR17","TUR18","TUR19","TUR7","TUR8","URU1","URU10","URU11","URU15","URU16","URU2","URU20","URU3","URU4","URU5","URU6","URU7","URU8","URU9","USA10","USA11","USA13","USA17","USA2","USA3","USA5","USA6","USA7","USA8","USA9","UZB1","UZB10","UZB12","UZB13","UZB14","UZB15","UZB17","UZB19","UZB20","UZB4","UZB6","UZB8","UZB9"];
 
 /* ══ ESTADO ══ */
-const CHAVE = "controle_figurinhas_copa2026_pessoal_corrigido_v1";
+const CHAVE = "controle_figurinhas_copa2026_pessoal_corrigido_v2";
 let estado = JSON.parse(localStorage.getItem(CHAVE)||"null") || estadoInicial();
 
 function estadoInicial(){
@@ -626,9 +628,14 @@ function desenhar(){
   const app=document.getElementById('app');
   const busca=document.getElementById('busca').value.toLowerCase().trim();
   const filtro=document.getElementById('filtro').value;
-  let html='', total=0, tenhoT=0, secaoAtual='';
+  let html='', total=0, tenhoT=0, completasT=0, secaoAtual='';
 
-  ALBUM.forEach(g=>{total+=g.itens.length;tenhoT+=obtidos(g).length;});
+  ALBUM.forEach(g=>{
+    total+=g.itens.length;
+    const ob=obtidos(g);
+    tenhoT+=ob.length;
+    if(ob.length===g.itens.length) completasT++;
+  });
   const faltaT=total-tenhoT;
   const pct=total?Math.round((tenhoT/total)*100):0;
 
@@ -636,6 +643,7 @@ function desenhar(){
   document.getElementById('faltaTotal').textContent=faltaT;
   document.getElementById('totalGeral').textContent=total;
   document.getElementById('percentual').textContent=pct+'%';
+  document.getElementById('completasTotal').textContent=completasT+'/'+ALBUM.length;
   document.getElementById('progBar').style.width=pct+'%';
 
   let gruposVisiveis=[];
@@ -676,7 +684,6 @@ function desenhar(){
       ? `<div class="ct-completo">🏅 100%</div>`
       : `<div class="ct-tenho">✅ ${t.length}</div><div class="ct-falta">❌ ${f.length}</div>`;
 
-    // cor da barra de progresso baseada no gradiente do card
     const barGrad=completo?'linear-gradient(90deg,#4eff91,#ffdd00)':g.grad;
 
     html+=`
@@ -702,7 +709,6 @@ function desenhar(){
   </div>
 </div>`;
 
-    // fecha a grid se for o último item da seção ou o último item geral
     const proxIdx=vi+1;
     const proxG=gruposVisiveis[proxIdx];
     if(!proxG || proxG.g.secao!==g.secao) html+='</div>';
@@ -710,7 +716,6 @@ function desenhar(){
 
   app.innerHTML=html;
 
-  // animação escalonada nos cards
   document.querySelectorAll('.pais-card').forEach((c,i)=>{
     c.style.animationDelay=(i*0.03)+'s';
   });
